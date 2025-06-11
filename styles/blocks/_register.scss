@@ -1,0 +1,111 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.register {
+    position: relative;
+
+    width: 100%;
+    height: 100dvh;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100dvh;
+        background-color: var(--colorDark);
+        opacity: 0.7;
+        z-index: 1;
+    }
+
+    &__body {
+        @include flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 15px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+
+        width: 700px;
+        height: 900px;
+        max-width: 90%;
+
+        padding: 70px 130px;
+        box-sizing: border-box;
+
+        background-color: var(--colorDark);
+        border-radius: var(--borderMain);
+        -webkit-box-shadow: 0px 10px 10px 5px var(--colorAccent) ;
+        -moz-box-shadow: 0px 10px 10px 5px var(--colorAccent);
+        box-shadow: 0px 10px 10px 5px var(--colorAccent);
+
+        &-list {
+            @include flex;
+            flex-direction: column;
+            gap: 25px;
+
+            margin: 50px 0;
+
+            width: 100%;
+        }
+
+        &-item {
+            width: 100%;
+        }
+
+        &-header{
+            @include flex;
+            justify-content: space-between;
+
+            width: 100%;
+        }
+    }
+
+    &__label {
+        display: block;
+    }
+
+    &__input {
+        width: 100%;
+        height: to-rem(20);
+        padding: to-rem(10);
+
+        background-color: transparent;
+        border: to-rem(2) var(--colorAccentAlt) solid;
+        border-radius: var(--borderMain);
+
+        color: var(--colorLight);
+
+        &:focus,
+        &:hover,
+        &:active {
+            border: to-rem(2) var(--colorAccent) solid;
+            background-color: transparent;
+        }
+
+        &:focus {
+            outline: to-rem(2) var(--colorAccent) solid;
+            outline-offset: 5px;
+        }
+    }
+
+    &__close{
+        @include flex;
+        width: 40px;
+        height: 40px;
+        background: center;
+        border: none;
+
+        &:hover{
+            border: 2px solid var(--colorAccent);
+        }
+    }
+
+}

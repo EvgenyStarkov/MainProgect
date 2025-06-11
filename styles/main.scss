@@ -6,3 +6,7 @@
 @use 'mixins';
 @use 'functions';
 @use 'core';
+
+@use './blocks/register';
+@use './blocks/checkbox';
+@use './blocks/button'

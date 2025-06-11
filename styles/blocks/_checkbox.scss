@@ -1,0 +1,37 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.checkbox {
+    position: relative;
+    
+    &__btn {
+        @include visually-hidden;
+        position: relative;
+
+        &:checked ~ .checkbox__label::before {
+            background-image: url(../../assets/icons/checkbox.svg);
+            background-position: center;
+        }
+    }
+
+    &__label {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        padding-left: to-rem(35);
+        box-sizing: border-box;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 20px;
+            min-height: 20px;
+            border: 1px solid var(--colorAccent);
+            background-color: transparent; 
+            box-sizing: border-box;
+        }
+    }
+}

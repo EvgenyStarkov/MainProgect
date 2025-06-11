@@ -1,0 +1,27 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.button{
+    display: inline-block;
+
+    margin: to-rem(20) 0;
+    padding:to-rem(10);
+
+    width: fluid(150,100);
+    max-width: 70%;
+    min-width: fit-content;
+    height: fluid(50,35);
+
+    background-color: transparent;
+    border: 2px solid var(--colorAccent);
+    border-radius: var(--borderMain);
+
+    color: var(--colorAccent);
+    text-align: center;
+    
+    &:active{
+       border: 2px solid var( --colorAccentClick);
+       color: var(--colorAccentClick);
+    }
+}

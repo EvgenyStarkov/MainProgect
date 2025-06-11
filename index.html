@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="register">
+        <form action="submit" name="register" class="register__body">
+            <div class="register__body-header">
+                <h1 class="register__title">Регистрация</h1>
+                <button class="register__close" type="button"><img src="./assets/icons/Close.svg" alt="" class="register__close-img"></button>    
+            </div>
+            <ul class="register__body-list">
+                <li class="register__body-item">
+                    <label class="register__label">
+                        <input type="text" class="register__input" name="name" required>
+                    </label>
+                </li>
+                <li class="register__body-item">
+                    <label class="register__label">
+                        <input type="text" class="register__input" name="userName" required>
+                    </label>
+                </li>
+                <li class="register__body-item">
+                    <label class="register__label">
+                        <input type="email" class="register__input" name="email" required>
+                    </label>
+                </li>
+                <li class="register__body-item">
+                    <label class="register__label">
+                        <input type="tel" class="register__input" name="tel" required>
+                    </label>
+                </li>
+                <li class="register__body-item">
+                    <label class="register__label">
+                        <input type="password" class="register__input" name="password" required>
+                    </label>
+                </li>
+                <li class="register__body-item">
+                    <label class="register__label">
+                        <input type="password" class="register__input" name="password" required>
+                    </label>
+                </li>
+            </ul>
+            <label class="register__checkbox checkbox">
+                <input type="checkbox" name="privacyPolicy" id="" class="checkbox__btn" required>
+                <span class="checkbox__label">Я согласен с полицикой конфидициальности</span>
+            </label>
+            <label class="register__checkbox checkbox">
+                <input type="checkbox" name="consentToMailing" id="" class="checkbox__btn">
+                <span class="checkbox__label"> Согласен на почтовую рассылку</span>
+            </label>
+            <button type="submit" class="register__submit button">Зарегестрироватся</button>
+        </form>
+    </div>
+</body>
+</html>

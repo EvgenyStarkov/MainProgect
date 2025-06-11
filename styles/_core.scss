@@ -2,3 +2,17 @@
 @use './functions' as *;
 @use './mixins' as *;
 
+body{
+    background-color: var(--colorDark);
+    color: var(--colorLight);
+
+    font-size: fluid(20,14);
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--colorAccentAlt);
+};
+
+h1, .h1{
+    font-size: fluid(35,20);
+}

@@ -57,4 +57,184 @@ a {
   color: currentColor;
 }
 
+:root {
+  --colorDark: #121212;
+  --colorDarkAlt: #2D2D2D;
+  --colorDarkAlt2: #454545;
+  --colorLight: #F8F8F8;
+  --colorLightAlt: #E0E0E0;
+  --colorLightAlt2: #C8C8C8;
+  --colorAccentClick: #FFE6F0;
+  --colorAccent: #FF2A8F;
+  --colorAccentBlocked: #E00070;
+  --colorAccentAltClick: #E6FAFF;
+  --colorAccentAlt: #2AC6FF;
+  --colorAccentAltBlocked: #00A0E0;
+  --borderMain: 35px;
+}
+
+body {
+  background-color: var(--colorDark);
+  color: var(--colorLight);
+  font-size: clamp(0.875rem, 0.7541322314rem + 0.4958677686vw, 1.25rem);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--colorAccentAlt);
+}
+
+h1, .h1 {
+  font-size: clamp(1.25rem, 0.9478305785rem + 1.2396694215vw, 2.1875rem);
+}
+
+.register {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+}
+.register::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100dvh;
+  background-color: var(--colorDark);
+  opacity: 0.7;
+  z-index: 1;
+}
+.register__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 700px;
+  height: 900px;
+  max-width: 90%;
+  padding: 70px 130px;
+  box-sizing: border-box;
+  background-color: var(--colorDark);
+  border-radius: var(--borderMain);
+  -webkit-box-shadow: 0px 10px 10px 5px var(--colorAccent);
+  -moz-box-shadow: 0px 10px 10px 5px var(--colorAccent);
+  box-shadow: 0px 10px 10px 5px var(--colorAccent);
+}
+.register__body-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  margin: 50px 0;
+  width: 100%;
+}
+.register__body-item {
+  width: 100%;
+}
+.register__body-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.register__label {
+  display: block;
+}
+.register__input {
+  width: 100%;
+  height: 1.25rem;
+  padding: 0.625rem;
+  background-color: transparent;
+  border: 0.125rem var(--colorAccentAlt) solid;
+  border-radius: var(--borderMain);
+  color: var(--colorLight);
+}
+.register__input:focus, .register__input:hover, .register__input:active {
+  border: 0.125rem var(--colorAccent) solid;
+  background-color: transparent;
+}
+.register__input:focus {
+  outline: 0.125rem var(--colorAccent) solid;
+  outline-offset: 5px;
+}
+.register__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: center;
+  border: none;
+}
+.register__close:hover {
+  border: 2px solid var(--colorAccent);
+}
+
+.checkbox {
+  position: relative;
+}
+.checkbox__btn {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+  position: relative;
+}
+.checkbox__btn:checked ~ .checkbox__label::before {
+  background-image: url(../../assets/icons/checkbox.svg);
+  background-position: center;
+}
+.checkbox__label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 2.1875rem;
+  box-sizing: border-box;
+}
+.checkbox__label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 20px;
+  min-height: 20px;
+  border: 1px solid var(--colorAccent);
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.button {
+  display: inline-block;
+  margin: 1.25rem 0;
+  padding: 0.625rem;
+  width: clamp(6.25rem, 5.242768595rem + 4.132231405vw, 9.375rem);
+  max-width: 70%;
+  min-width: fit-content;
+  height: clamp(2.1875rem, 1.8853305785rem + 1.2396694215vw, 3.125rem);
+  background-color: transparent;
+  border: 2px solid var(--colorAccent);
+  border-radius: var(--borderMain);
+  color: var(--colorAccent);
+  text-align: center;
+}
+.button:active {
+  border: 2px solid var(--colorAccentClick);
+  color: var(--colorAccentClick);
+}
+
 /*# sourceMappingURL=style.css.map */
