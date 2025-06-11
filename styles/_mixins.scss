@@ -1,0 +1,93 @@
+@use 'sass:math';
+
+@mixin visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+}
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin container{
+    width: 90%;
+    max-width: 1120px;
+}
+
+//  Медиазапросы
+
+$laptop: 1920px;
+$laptop-s: 1440px;
+$tablet: 1024px;
+$mobile: 800px;
+$mobile-s: 480px;
+
+@mixin media($max: null, $min: null) {
+    @if $max and $min {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+
+    @else if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+
+    @else if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+}
+
+
+
+@mixin laptop {
+    @include media($max: $laptop) {
+        @content;
+    }
+}
+
+
+
+@mixin laptop-s {
+    @include media($max: $laptop-s) {
+        @content;
+    }
+}
+
+
+
+@mixin tablet {
+    @include media($max: $tablet) {
+        @content;
+    }
+}
+
+
+
+@mixin mobile {
+    @include media($max: $mobile) {
+        @content;
+    }
+}
+
+
+
+@mixin mobile-s {
+    @include media($max: $mobile-s) {
+        @content;
+    }
+}
