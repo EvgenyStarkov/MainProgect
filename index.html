@@ -6,6 +6,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="styles/style.css">
+    <script src="./scripts/register.js" defer ></script>
 </head>
 <body>
     <div class="register">
@@ -17,41 +18,41 @@
             <ul class="register__body-list">
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="text" class="register__input" name="name" required>
+                        <input type="text" class="register__input" name="name" required id="rName">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="text" class="register__input" name="userName" required>
+                        <input type="text" class="register__input" name="userName" required id="rUserName">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="email" class="register__input" name="email" required>
+                        <input type="email" class="register__input" name="email" required id="rEmail">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="tel" class="register__input" name="tel" required>
+                        <input type="tel" class="register__input" name="tel" required id="rTel">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="password" class="register__input" name="password" required>
+                        <input type="password" class="register__input" name="password" required id="rPassword">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="password" class="register__input" name="password" required>
+                        <input type="password" class="register__input" name="password" required id="rPasswordTwo">
                     </label>
                 </li>
             </ul>
             <label class="register__checkbox checkbox">
-                <input type="checkbox" name="privacyPolicy" id="" class="checkbox__btn" required>
+                <input type="checkbox" name="privacyPolicy"  class="checkbox__btn" required id="rCheckbox">
                 <span class="checkbox__label">Я согласен с полицикой конфидициальности</span>
             </label>
             <label class="register__checkbox checkbox">
-                <input type="checkbox" name="consentToMailing" id="" class="checkbox__btn">
+                <input type="checkbox" name="consentToMailing" id="rCheckboxTwo" class="checkbox__btn">
                 <span class="checkbox__label"> Согласен на почтовую рассылку</span>
             </label>
             <button type="submit" class="register__submit button">Зарегестрироватся</button>
