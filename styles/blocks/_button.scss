@@ -2,16 +2,16 @@
 @use '../functions' as *;
 @use '../mixins' as *;
 
-.button{
+.button {
     display: inline-block;
 
     margin: to-rem(20) 0;
-    padding:to-rem(10);
+    padding: to-rem(10);
 
-    width: fluid(150,100);
+    width: fluid(150, 100);
     max-width: 70%;
     min-width: fit-content;
-    height: fluid(50,35);
+    height: fluid(50, 35);
 
     background-color: transparent;
     border: 2px solid var(--colorAccent);
@@ -19,9 +19,23 @@
 
     color: var(--colorAccent);
     text-align: center;
-    
-    &:active{
-       border: 2px solid var( --colorAccentClick);
-       color: var(--colorAccentClick);
+
+    @media (hover: hover) {
+        &:hover {
+            outline: to-rem(2) var(--colorAccent) solid;
+            outline-offset: to-rem(5);
+        }
+    }
+
+    &:focus-visible {
+        outline: to-rem(2) var(--colorAccent) solid;
+        outline-offset: to-rem(5);
+    }
+
+    &:active {
+        border: 2px solid var(--colorAccentClick);
+        color: var(--colorAccentClick);
+        outline: to-rem(2) var(--colorAccentClick) solid;
+        outline-offset: 5px;
     }
 }

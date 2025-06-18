@@ -9,24 +9,6 @@ class User{
         this.password = e;
         this.emailConsent = f;
         console.log(this, 'ОбЬект');
-
-         fetch('https://mainproject/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', 
-                'X-Custom-Header': 'MyValue' 
-            },
-            body: JSON.stringify(this)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Успех:', data);
-        })
     }    
 }
 
@@ -53,6 +35,16 @@ registerSubmit.addEventListener('click', (event) => {
         console.log(newUser, "Новый пользователь")
     } else{alert('Парроли не совпадаютю Повторите попытку!!!!!')}
 
+});
+
+const accauntBtn = document.querySelector('.hero__accaunt-btn');
+const register = document.querySelector('.register');
+const registerCloseBtn = document.querySelector('.register__close')
+accauntBtn.addEventListener('click', ()=>{
+    register.style.display = 'block'
+})
+registerCloseBtn.addEventListener('click',()=>{
+    register.style.display = 'none'
 })
 
 

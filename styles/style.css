@@ -57,6 +57,20 @@ a {
   color: currentColor;
 }
 
+@font-face {
+  font-family: "WDXL Lubrifont SC";
+  src: url("../assets/fonts/WDXLLubrifontSC-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --colorDark: #121212;
   --colorDarkAlt: #2D2D2D;
@@ -71,9 +85,12 @@ a {
   --colorAccentAlt: #2AC6FF;
   --colorAccentAltBlocked: #00A0E0;
   --borderMain: 35px;
+  --fontMain:"Roboto, sans-serif";
+  --fontAccent:"WDXL Lubrifont SC, sans-serif" ;
 }
 
 body {
+  position: relative;
   background-color: var(--colorDark);
   color: var(--colorLight);
   font-size: clamp(0.875rem, 0.7541322314rem + 0.4958677686vw, 1.25rem);
@@ -81,14 +98,34 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--colorAccentAlt);
+  font-family: var(--fontAccent);
+  font-weight: normal;
 }
 
 h1, .h1 {
   font-size: clamp(1.25rem, 0.9478305785rem + 1.2396694215vw, 2.1875rem);
 }
 
+label {
+  font-size: clamp(0.9375rem, 0.8367768595rem + 0.4132231405vw, 1.25rem);
+  font-family: var(--fontAccent);
+  font-weight: normal;
+  color: var(--colorAccentAlt);
+}
+
+input::placeholder {
+  color: var(--colorLightAlt2);
+  font-size: clamp(0.625rem, 0.5242768595rem + 0.4132231405vw, 0.9375rem);
+  font-family: var(--fontMain);
+  font-weight: bold;
+}
+
 .register {
-  position: relative;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
   width: 100%;
   height: 100dvh;
 }
@@ -116,10 +153,12 @@ h1, .h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  width: 700px;
-  height: 900px;
+  overflow-y: scroll;
+  width: 750px;
+  height: 90dvh;
   max-width: 90%;
-  padding: 70px 130px;
+  max-height: 950px;
+  padding: 50px 100px;
   box-sizing: border-box;
   background-color: var(--colorDark);
   border-radius: var(--borderMain);
@@ -127,13 +166,39 @@ h1, .h1 {
   -moz-box-shadow: 0px 10px 10px 5px var(--colorAccent);
   box-shadow: 0px 10px 10px 5px var(--colorAccent);
 }
+.register__body::-webkit-scrollbar {
+  width: 0px;
+}
+@media (max-width: 1024px) {
+  .register__body {
+    width: 80%;
+    height: 90dvh;
+  }
+}
+@media (max-width: 800px) {
+  .register__body {
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+    height: 100dvh;
+    -webkit-box-shadow: 0 0 0 0;
+    -moz-box-shadow: 0px 0px 0px 0px var(--colorAccent);
+    box-shadow: 0px 0px 0px 0px var(--colorAccent);
+  }
+}
+@media (max-width: 480px) {
+  .register__body {
+    padding: 25px 50px;
+  }
+}
 .register__body-list {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 25px;
-  margin: 50px 0;
+  gap: 15px;
+  margin: 30px 0;
   width: 100%;
 }
 .register__body-item {
@@ -151,8 +216,9 @@ h1, .h1 {
 }
 .register__input {
   width: 100%;
-  height: 1.25rem;
+  height: 0.9375rem;
   padding: 0.625rem;
+  margin: 0.625rem 0;
   background-color: transparent;
   border: 0.125rem var(--colorAccentAlt) solid;
   border-radius: var(--borderMain);
@@ -175,8 +241,24 @@ h1, .h1 {
   background: center;
   border: none;
 }
-.register__close:hover {
-  border: 2px solid var(--colorAccent);
+.register__close:focus, .register__close:hover, .register__close:active {
+  border: 0.125rem var(--colorAccent) solid;
+  background-color: transparent;
+}
+@media (hover: hover) {
+  .register__close:hover {
+    border: 2px solid var(--colorAccent);
+  }
+}
+@media (max-width: 480px) {
+  .register__close {
+    width: 30px;
+    height: 30px;
+  }
+}
+.register__close-img {
+  width: 100%;
+  height: 100%;
 }
 
 .checkbox {
@@ -199,12 +281,17 @@ h1, .h1 {
   background-image: url(../../assets/icons/checkbox.svg);
   background-position: center;
 }
+.checkbox__btn:focus-visible ~ .checkbox__label::before {
+  outline: 0.0625rem var(--colorAccent) solid;
+  outline-offset: 0.1875rem;
+}
 .checkbox__label {
   position: relative;
   display: inline-block;
   cursor: pointer;
   padding-left: 2.1875rem;
   box-sizing: border-box;
+  color: var(--colorLight);
 }
 .checkbox__label::before {
   content: "";
@@ -232,9 +319,21 @@ h1, .h1 {
   color: var(--colorAccent);
   text-align: center;
 }
+@media (hover: hover) {
+  .button:hover {
+    outline: 0.125rem var(--colorAccent) solid;
+    outline-offset: 0.3125rem;
+  }
+}
+.button:focus-visible {
+  outline: 0.125rem var(--colorAccent) solid;
+  outline-offset: 0.3125rem;
+}
 .button:active {
   border: 2px solid var(--colorAccentClick);
   color: var(--colorAccentClick);
+  outline: 0.125rem var(--colorAccentClick) solid;
+  outline-offset: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -3,6 +3,8 @@
 @use './mixins' as *;
 
 body{
+    position: relative;
+    
     background-color: var(--colorDark);
     color: var(--colorLight);
 
@@ -11,8 +13,24 @@ body{
 
 h1,h2,h3,h4,h5,h6{
     color: var(--colorAccentAlt);
+    font-family: var(--fontAccent);
+    font-weight: normal;
 };
 
 h1, .h1{
     font-size: fluid(35,20);
+}
+
+label{
+    font-size: fluid(20,15);
+    font-family: var(--fontAccent);
+    font-weight: normal;
+    color: var(--colorAccentAlt);
+}
+
+input::placeholder{
+    color: var(--colorLightAlt2);
+    font-size: fluid(15,10);
+    font-family: var(--fontMain);
+    font-weight: bold;
 }

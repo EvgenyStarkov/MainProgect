@@ -9,41 +9,48 @@
     <script src="./scripts/register.js" defer ></script>
 </head>
 <body>
+    <button class="button hero__accaunt-btn">РЕГИСТРАЦИЯ</button>
     <div class="register">
         <form action="submit" name="register" class="register__body">
             <div class="register__body-header">
-                <h1 class="register__title">Регистрация</h1>
+                <h1 class="register__title"><b>РЕГИСТРАЦИЯ</b></h1>
                 <button class="register__close" type="button"><img src="./assets/icons/Close.svg" alt="" class="register__close-img"></button>    
             </div>
             <ul class="register__body-list">
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="text" class="register__input" name="name" required id="rName">
+                        ФИО
+                        <input type="text" class="register__input" name="name" required id="rName" placeholder="Введите свое Фио">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="text" class="register__input" name="userName" required id="rUserName">
+                        НИКНЕЙМ
+                        <input type="text" class="register__input" name="userName" required id="rUserName" placeholder="Введите свое имя пользователя">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="email" class="register__input" name="email" required id="rEmail">
+                        ЭЛЕКТРОННАЯ ПОЧТА
+                        <input type="email" class="register__input" name="email" required id="rEmail" placeholder="Введите свою электоную почту">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="tel" class="register__input" name="tel" required id="rTel">
+                        НОМЕР ТЕЛЕФОНА
+                        <input type="tel" class="register__input" name="tel" required id="rTel" placeholder="Введите свой номер телефона">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="password" class="register__input" name="password" required id="rPassword">
+                        ПАРОЛЬ
+                        <input type="password" class="register__input" name="password" required id="rPassword" placeholder="Введите свой пароль">
                     </label>
                 </li>
                 <li class="register__body-item">
                     <label class="register__label">
-                        <input type="password" class="register__input" name="password" required id="rPasswordTwo">
+                        ПОВТОРИТЕ ПАРОЛЬ
+                        <input type="password" class="register__input" name="password" required id="rPasswordTwo" placeholder="Проверте свой пароль">
                     </label>
                 </li>
             </ul>
