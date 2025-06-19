@@ -7,14 +7,29 @@
 
     <link rel="stylesheet" href="styles/style.css">
     <script src="./scripts/register.js" defer ></script>
+    <script src="./scripts/telMask.js" defer ></script>
 </head>
 <body>
-    <button class="button hero__accaunt-btn">РЕГИСТРАЦИЯ</button>
+    <div class="hero">
+        <div class="hero__header">
+            <div class="hero__header-inner">
+                <div class="hero__logo logo">
+                </div>
+                <div class="hero__menu">
+                    <button class="hero__serch-btn"></button>
+                    <button class="button hero__accaunt-btn">РЕГИСТРАЦИЯ</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="register">
         <form action="submit" name="register" class="register__body">
             <div class="register__body-header">
                 <h1 class="register__title"><b>РЕГИСТРАЦИЯ</b></h1>
-                <button class="register__close" type="button"><img src="./assets/icons/Close.svg" alt="" class="register__close-img"></button>    
+                <label class="register__close-label" for="closeRegister">Закрыть окно регистрации</label>    
+                    <button class="register__close" type="button" id="closeRegister">
+                        <img src="./assets/icons/Close.svg" alt="" class="register__close-img">
+                    </button>
             </div>
             <ul class="register__body-list">
                 <li class="register__body-item">
