@@ -11,16 +11,25 @@
 </head>
 <body>
     <div class="hero">
-        <div class="hero__header">
-            <div class="hero__header-inner">
-                <div class="hero__logo logo">
+        <div class="hero__header header">
+            <div class="header__inner">
+                <div class="header__logo logo">
+                    <img src="./assets/icons/logo.svg" alt="" class="logo__img">
+                    <span class="logo__title">MEGAFILM </span>
                 </div>
-                <div class="hero__menu">
-                    <button class="hero__serch-btn"></button>
-                    <button class="button hero__accaunt-btn">РЕГИСТРАЦИЯ</button>
+                <div class="header__menu">
+                    <button class="header__search-btn"><img src="./assets/icons/Search.svg" alt="" class="header__search-img"></button>
+                    <button class="header__accaunt-btn"><img src="./assets/icons/Profile.svg" alt="" class="header__accaunt-img " id="accauntBtn"></button>
                 </div>
             </div>
         </div>
+        <video class="hero__background" autoplay muted loop>
+            <source src="./assets/video/103503566_free.mp4" type="video/mp4">
+            <h1>Увы рекламное видео не загрузилось</h1>
+        </video> 
+         <div class="hero__more">
+        <button class="hero__more-btn button" id="moreBtn"> Подробнее</button>
+    </div>
     </div>
     <div class="register">
         <form action="submit" name="register" class="register__body">

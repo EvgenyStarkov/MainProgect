@@ -1,0 +1,55 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.header {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 50;
+
+    width: 100%;
+    height: to-rem(75);
+
+    &__inner {
+        @include flex;
+        justify-content: space-between;
+
+        @include container;
+        min-height: 100%;
+
+        margin: auto;
+    }
+
+    &__search-btn,
+    &__accaunt-btn {
+        width: fit-content;
+        height: fit-content;
+        background-color: transparent;
+        border: none;
+        border-radius: var(--borderMain);
+        box-sizing: border-box;
+
+        @media (hover: hover) {
+            &:hover {
+                border: 2px var(--colorAccent) solid;
+            }
+        }
+
+        &:focus-visible {
+            border: 2px var(--colorAccent) solid;
+            outline: none;
+        }
+
+        &:active {
+            border: 2px solid var(--colorAccentClick);
+            color: var(--colorAccentClick);
+        }
+    }
+
+    &__search-img,
+    &__accaunt-img{
+        width: fluid(40,20);
+        height: fluid(40,20);
+    }
+}

@@ -37,7 +37,7 @@ registerSubmit.addEventListener('click', (event) => {
 
 });
 
-const accauntBtn = document.querySelector('.hero__accaunt-btn');
+const accauntBtn = document.getElementById('accauntBtn');
 const register = document.querySelector('.register');
 const registerCloseBtn = document.querySelector('.register__close')
 accauntBtn.addEventListener('click', ()=>{
