@@ -1,0 +1,96 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.menu {
+    @include flex;
+    flex-wrap: wrap;
+    gap: fluid(50, 10);
+    height: 500px;
+    min-height: fit-content;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    &__item {
+        @include flex;
+        align-items: start;
+        
+        position: relative;
+
+        width: fluid(250, 25);
+        height: fluid(333, 33);
+
+        border: 3px var(--colorAccent) solid;
+        border-radius: var(--borderMain);
+
+        &:hover {
+                -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+                -moz-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+                box-shadow: 3px 3px 7px 3px var(--colorAccent);
+
+            }
+
+        @include mobile {
+            width: 100%;
+            height: to-rem(140);
+
+            justify-content: start;
+            align-items: center;
+
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px var(--colorAccent) solid;
+
+            &:hover{
+                box-shadow: none;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        &-img{
+            width: 70%;
+            object-fit: contain;
+
+            margin: to-rem(15) auto;
+
+            @include mobile{
+                width: 75px;
+                margin: 35px;
+            }
+
+            @include mobile-s{
+                width: 50px;
+                margin: 20px;
+            }
+        }
+
+        &-title{
+            position: absolute;
+            bottom: to-rem(30);
+            right: to-rem(-30);
+
+            padding: 5px 10px;
+
+            background-color: var(--colorDark);
+            color: var(--colorAccent);
+
+            @include tablet{
+                bottom:  to-rem(15);
+                right: ro-rem(-20);
+            }
+            
+
+            @include mobile{
+                position: static;
+                display: block;
+            }
+        }
+    
+    }
+}

@@ -1,0 +1,79 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.collections {
+    &__item {
+        @include container;
+
+        margin: to-rem(35) auto;
+
+        @include tablet {
+            width: 100%;
+        }
+
+        &-title {
+            @include mobile {
+                margin-left: to-rem(15)
+            }
+        }
+
+        &-body {
+            @include flex;
+            justify-content: space-around;
+            gap: fluid(40, 20);
+
+
+            height: fluid(350, 200);
+            width: 90%;
+
+            margin: to-rem(17) auto;
+
+            overflow-x: scroll;
+
+            &::-webkit-scrollbar {
+                width: 0px;
+            }
+
+            @include mobile {
+                padding-inline: to-rem(15);
+                box-sizing: border-box;
+            }
+        }
+
+        &-btn {
+            background-color: transparent;
+            border: none;
+            width: fit-content;
+            height: fit-content;
+            margin-right: fluid(35, 10);
+            color: var(--colorAccent);
+
+            &:focus,
+            &:hover,
+            &:active {
+                border: to-rem(2) var(--colorAccent) solid;
+                outline: none;
+            }
+        }
+
+        &-link {
+            width: fit-content;
+            height: fit-content;
+            border-radius: var(--borderAlt);
+
+            &:hover {
+                -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+                -moz-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+                box-shadow: 3px 3px 7px 3px var(--colorAccent);
+
+            }
+
+            &-img {
+                width: fluid(200, 100);
+                height: fluid(300, 150);
+                border-radius: var(--borderAlt);
+            }
+        }
+    }
+}

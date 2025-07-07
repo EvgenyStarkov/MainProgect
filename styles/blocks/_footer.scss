@@ -1,0 +1,61 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.footer {
+
+    height: fit-content;
+    margin-top: to-rem(70);
+    background-color: var(--colorDarkAlt);
+
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        @include container;
+        height: 100%;
+        padding-block: to-rem(35);
+        box-sizing: border-box;
+
+        @include mobile {
+            grid-template-rows: 1fr 4fr;
+        }
+    }
+
+    &__main {
+        margin-top: to-rem(10);
+        font-size: fluid(25, 15);
+        grid-column: 1/-1;
+        align-items: center
+    }
+
+    &__soc1als {
+        &-title {
+            text-align: center;
+        }
+
+        &-tel {
+            font-size: fluid(22, 12);
+            text-align: center;
+
+            &-accent {
+                font-size: fluid(25, 15);
+                color: var(--colorAccentAlt);
+            }
+        }
+
+        &-links {
+            @include flex;
+            gap: 15px;
+            width: fit-content;
+            margin: auto;
+        }
+
+        &-img {
+            width: fluid(80, 30);
+            height: fluid(80, 30);
+        }
+    }
+}

@@ -6,6 +6,8 @@
     @include flex;
     justify-content: space-between;
     width: 15%;
+    height: fit-content;
+    
 
     &__img {
         width: fluid(55,25);

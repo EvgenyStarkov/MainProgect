@@ -2,7 +2,7 @@
 @use '../functions' as *;
 @use '../mixins' as *;
 
-.register {
+.login {
     display: none;
     position: fixed;
     top: 0;
@@ -41,7 +41,7 @@
         width: 750px;
         height: 90dvh;
         max-width: 90%;
-        max-height: 950px;
+        max-height: 550px;
 
 
         padding: 50px 100px;

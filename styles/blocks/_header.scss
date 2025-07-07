@@ -4,12 +4,13 @@
 
 .header {
     position: relative;
-    top: 0;
+    top: 0px;
     left: 0;
     z-index: 50;
 
     width: 100%;
     height: to-rem(75);
+
 
     &__inner {
         @include flex;
@@ -48,8 +49,46 @@
     }
 
     &__search-img,
-    &__accaunt-img{
-        width: fluid(40,20);
-        height: fluid(40,20);
+    &__accaunt-img {
+        width: fluid(40, 20);
+        height: fluid(40, 20);
     }
+
+    &__nav {
+        @include flex;
+        gap: fluid(50, 10);
+        flex-wrap: wrap;
+
+        display: none;
+
+        @include mobile{
+            gap: fluid(170, 50);
+
+            position: absolute;
+            left: 0;
+            bottom: to-rem(-15);
+
+            width: 100%;
+            height: to-rem(25);
+            background-color: var(--colorDarkAlt);
+        }
+
+        @include mobile-s{
+            gap: fluid(500,10);
+        }
+
+        
+    }
+}
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    background-color: var(--colorDarkAlt);
+    z-index: 50;
+    transition: background-color 0.3s ease;
+}
+
+.sticky-header .header__nav{
+    display: flex;
 }

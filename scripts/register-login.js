@@ -39,13 +39,31 @@ registerSubmit.addEventListener('click', (event) => {
 
 const accauntBtn = document.getElementById('accauntBtn');
 const register = document.querySelector('.register');
-const registerCloseBtn = document.querySelector('.register__close')
+const registerCloseBtn = document.querySelector('.register__close');
+const login = document.querySelector('.login');
+const loginCloseBtn = document.querySelector('.login__close');
+const registerOpenBtn = document.querySelector('.login__register-link');
+
 accauntBtn.addEventListener('click', ()=>{
+    document.body.style.overflow = 'hidden';
+    login.style.display = 'block';
+});
+
+registerCloseBtn.addEventListener('click',()=>{
+    document.body.style.overflow = 'scroll';
+    register.style.display = 'none'
+});
+
+loginCloseBtn.addEventListener('click',()=>{
+    document.body.style.overflow = 'scroll';
+    login.style.display = 'none'
+})
+
+registerOpenBtn.addEventListener('click',()=>{
+    login.style.display = 'none'
     register.style.display = 'block'
 })
-registerCloseBtn.addEventListener('click',()=>{
-    register.style.display = 'none'
-})
+
 
 
 

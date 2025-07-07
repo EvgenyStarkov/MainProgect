@@ -1,0 +1,93 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.fresh-hits {
+    height: calc(100dvh - to-rem(75));
+    min-height: fit-content;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/image/hits\ bg.jpg);
+
+    @include mobile {
+        background-image: url(../../assets/image/hits\ mobile\ bg.jpg);
+    }
+
+    &__inner {
+        @include container;
+        @include flex;
+        justify-content: space-between;
+        align-items: start;
+        flex-direction: column;
+        min-height: 100%;
+
+        @include tablet {
+            width: 100%;
+        }
+    }
+
+    &__list {
+        @include flex;
+        justify-content: space-around;
+        gap: 15px;
+
+
+        height: fluid(350,200);
+        width: 95%;
+
+        margin: auto;
+        margin-bottom: 35px;
+
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        @include mobile-s {
+            overflow-x: none;
+            flex-wrap: wrap;
+        }
+
+    }
+
+    &__item {
+        width: fluid(200, 100);
+        height: fluid(300, 150);
+        border-radius: var(--borderAlt);
+        -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccentAlt);
+        -moz-box-shadow: 3px 3px 7px 3px var(--colorAccentAlt);
+        box-shadow: 3px 3px 7px 3px var(--colorAccentAlt);
+
+        &:hover {
+            -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+            -moz-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+            box-shadow: 3px 3px 7px 3px var(--colorAccent);
+        }
+    }
+
+    &__content {
+        width: 40%;
+        margin: to-rem(50);
+
+        @include mobile {
+            width: 80%;
+            margin: to-rem(15) auto;
+        }
+
+        @include mobile-s {
+            width: 95%;
+        }
+    }
+
+    &__title {
+        font-size: fluid(60, 25);
+        margin-bottom: to-rem(15);
+    }
+
+    &__text {
+        font-size: fluid(25, 17);
+    }
+}
