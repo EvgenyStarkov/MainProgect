@@ -20,6 +20,14 @@
         object-fit: cover;
     }
 
+    &__header{
+        background-color: transparent !important;
+
+        & header__nav{
+            display: none;
+        }
+    }
+
     &__more {
         @include flex;
 

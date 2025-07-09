@@ -1,0 +1,113 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.filter {
+    @include flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: fluid(35,15);
+    margin-top: to-rem(35);
+
+    &__select {
+        @include flex;
+        
+        border: none;
+        background-color: transparent;
+        color: var(--colorLight);
+        appearance: none;
+        max-height: fit-content;
+
+        color: var(--colorLight);
+        font-size: fluid(20, 14);
+
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &-label {
+            @include flex;
+
+            position: relative;
+            width: fit-content;
+            max-height: to-rem(25);
+
+            padding: to-rem(10);
+            padding-right: to-rem(50);
+
+            background-color: var(--colorDarkAlt);
+            border-radius: var(--borderMin);
+
+            color: var(--colorLight);
+            font-size: fluid(20, 14);
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: to-rem(15);
+
+                width: to-rem(20);
+                height: to-rem(20);
+
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url(../../assets/icons/next.svg);
+
+                transform: translateY(-50%) rotate(90deg);
+                z-index: 30;
+                pointer-events: none;
+                transition: all 1s ease;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    outline: to-rem(2) var(--colorAccent) solid;
+                    outline-offset: to-rem(5);
+                }
+            }
+
+            &:focus-visible {
+                outline: to-rem(2) var(--colorAccent) solid;
+                outline-offset: to-rem(5);
+            }
+
+            &:focus-within::after {
+                transform: translateY(-50%) rotate(270deg);
+            }
+        }
+    }
+
+    &__option {
+        width: fit-content;
+
+        padding: to-rem(10);
+
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+        border: none;
+
+        color: var(--colorLight);
+        font-size: fluid(20, 14);
+
+    }
+
+    &__button {
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+        border: none;
+
+        &:active {
+            border: none;
+            color: var(--colorAccentClick);
+            outline: to-rem(2) var(--colorAccentClick) solid;
+            outline-offset: 5px;
+        }
+    }
+}

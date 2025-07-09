@@ -11,6 +11,8 @@
     width: 100%;
     height: to-rem(75);
 
+    background-color: var(--colorDarkAlt);
+
 
     &__inner {
         @include flex;
@@ -59,8 +61,6 @@
         gap: fluid(50, 10);
         flex-wrap: wrap;
 
-        display: none;
-
         @include mobile{
             gap: fluid(170, 50);
 
@@ -84,7 +84,7 @@
 .sticky-header {
     position: fixed;
     top: 0;
-    background-color: var(--colorDarkAlt);
+    background-color: var(--colorDarkAlt) !important;
     z-index: 50;
     transition: background-color 0.3s ease;
 }
