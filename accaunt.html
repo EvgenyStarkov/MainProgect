@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megafilms</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="./assets/icons/logo.svg" type="image/x-icon">
+
+    <script src="./scripts/telMask.js" defer></script>
+    <script src="./scripts/scroll.js" defer></script>
+    <script src="./scripts/filter.js" defer></script>
+    <script src="./scripts/register-login.js" defer> </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header__inner">
+            <a class="header__logo logo" href="index.html">
+                <img src="./assets/icons/logo.svg" alt="" class="logo__img">
+                <span class="logo__title">MEGAFILM </span>
+            </a>
+            <nav class="header__nav">
+                <a href="films.html" class="header__nav-link">Фильмы</a>
+                <a href="serials.html" class="header__nav-link">Сериалы</a>
+                <a href="music.html" class="header__nav-link">Клипы</a>
+                <a href="sport.html" class="header__nav-link">Спорт</a>
+            </nav>
+            <div class="header__menu">
+                <button class="header__search-btn"><img src="./assets/icons/Search.svg" alt=""
+                        class="header__search-img"></button>
+                <button class="header__accaunt-btn"><img src="./assets/icons/Profile.svg" alt=""
+                        class="header__accaunt-img " id="accauntBtn"></button>
+            </div>
+        </div>
+    </div>
+    <section class="accaunt">
+        <div class="accaunt__header">
+            <div class="accaunt__main-info">
+                <img src="./assets/icons/Test Account.svg" alt="" class="accaunt__avatar">
+                <h1 class="accaunt_name"> user3017</h1>
+            </div>
+            <div class="accaunt__info">
+                <p class="accaunt__tel"> tel: +7 900 579 24 79</p>
+                <p class="accaunt__email">email: Estarkov135@gmail.com</p>
+                <p class="accaunt__name">name: Старков Евгений Витальевич</p>
+                <button class="button accaunt__info-btn">Изменить данные</button>
+            </div>
+        </div>
+        <div class="accaunt__subscriptions">
+            <h2 class="accaunt__subcriptions-title h1">Ваши подписки</h2>
+            <ul class="accaunt__subcriptions-list">
+                <li class="accaunt__subcriptions-item">
+                    lite
+                </li>
+                <li class="accaunt__subcriptions-item">
+                    music
+                </li>
+            </ul>
+            <form class="accaunt__subcriptions-link" action="subcriptions.html">
+            <button class="button accaunt__subcriptions-btn">Изменить</button>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__logo logo">
+                <img src="./assets/icons/logo.svg" alt="" class="logo__img">
+                <span class="logo__title">MEGAFILM </span>
+            </div>
+            <div class="footer__soc1als">
+                <h1 class="footer__soc1als-title">Мы в соц.сетях</h1>
+                <div class="footer__soc1als-links">
+                    <a href="" class="footer_soc1als-link"><img src="./assets/icons/Telegram.svg" alt=""
+                            class="footer__soc1als-img"></a>
+                    <a href="" class="footer_soc1als-link"><img src="./assets/icons/Instagram.svg" alt=""
+                            class="footer__soc1als-img"></a>
+                    <a href="" class="footer_soc1als-link"><img src="./assets/icons/VK com.svg" alt=""
+                            class="footer__soc1als-img"></a>
+                    <a href="" class="footer_soc1als-link"><img src="./assets/icons/Gmail.svg" alt=""
+                            class="footer__soc1als-img"></a>
+                </div>
+                <p class="footer__soc1als-tel">В службу поддержки вы можете обратится по данному номеру
+                    телефона <br>
+                    <span class="footer__soc1als-tel-accent">+7 (999) 999-99-99</span>
+                </p>
+            </div>
+            <div class="footer__main">
+                Megafilms — ваш премиальный медиацентр для всей семьи: фильмы, сериалы, спортивные
+                трансляции,
+                музыкальные клипы и ТВ-эфир.<br>
+                Эксклюзивный контент в HD/4K/HDR. Персонализированные подборки. Идеальная картинка и
+                звук на любом
+                устройстве.<br>
+                Смотрите вместе с близкими — безопасная среда и контент на все возрасты.<br>
+                <br>
+                Фильмы, сериалы, ТВ-эфир и спортивные события предоставляются только для личного
+                просмотра. Все права
+                защищены.<br>
+                <br>
+                © 2025 Megafilms<br>
+                ООО "Мегафильм Онлайн", ОГРН 1234567890, ИНН 1234567890<br>
+                Юридический адрес: 123456, г. Москва, ул. Киношная, д. 7<br>
+                <br>
+                <a href="" class="footer__main-link">Пользовательское соглашение</a> | <a href=""
+                    class="footer__main-link">Политика конфидициальности</a> | <a href=""
+                    class="footer__main-link">Реквизиты</a>
+            </div>
+        </div>
+    </footer>
+    <div class="register">
+                <form action="submit" name="register" class="register__body">
+                        <div class="register__body-header">
+                                <h1 class="register__title"><b>РЕГИСТРАЦИЯ</b></h1>
+                                <label class="register__close-label" for="closeRegister">Закрыть окно
+                                        регистрации</label>
+                                <button class="register__close" type="button" id="closeRegister">
+                                        <img src="./assets/icons/Close.svg" alt="" class="register__close-img">
+                                </button>
+                        </div>
+                        <ul class="register__body-list">
+                            <li class="register__body-item">
+                                        <label class="register__label">
+                                                Аватар
+                                                <input type="file" class="register__input file" name="name" required
+                                                        id="rName" placeholder="Введите свое Фио">
+                                        </label>
+                                </li>
+                                <li class="register__body-item">
+                                        <label class="register__label">
+                                                ФИО
+                                                <input type="text" class="register__input" name="name" required
+                                                        id="rName" placeholder="Введите свое Фио">
+                                        </label>
+                                </li>
+                                <li class="register__body-item">
+                                        <label class="register__label">
+                                                НИКНЕЙМ
+                                                <input type="text" class="register__input" name="userName" required
+                                                        id="rUserName" placeholder="Введите свое имя пользователя">
+                                        </label>
+                                </li>
+                                <li class="register__body-item">
+                                        <label class="register__label">
+                                                ЭЛЕКТРОННАЯ ПОЧТА
+                                                <input type="email" class="register__input" name="email" required
+                                                        id="rEmail" placeholder="Введите свою электоную почту">
+                                        </label>
+                                </li>
+                                <li class="register__body-item">
+                                        <label class="register__label">
+                                                НОМЕР ТЕЛЕФОНА
+                                                <input type="tel" class="register__input" name="tel" required id="rTel"
+                                                        placeholder="Введите свой номер телефона">
+                                        </label>
+                                </li>
+                                <li class="register__body-item">
+                                        <label class="register__label">
+                                                ПАРОЛЬ
+                                                <input type="password" class="register__input" name="password" required
+                                                        id="rPassword" placeholder="Введите свой пароль">
+                                        </label>
+                                </li>
+                                <li class="register__body-item">
+                                        <label class="register__label">
+                                                ПОВТОРИТЕ ПАРОЛЬ
+                                                <input type="password" class="register__input" name="password" required
+                                                        id="rPasswordTwo" placeholder="Проверте свой пароль">
+                                        </label>
+                                </li>
+                        </ul>
+                        <button type="submit" class="register__submit button">Изменить</button>
+                </form>
+        </div>
+</body>
+
+</html>

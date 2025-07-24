@@ -20,10 +20,10 @@
         object-fit: cover;
     }
 
-    &__header{
+    &__header {
         background-color: transparent !important;
 
-        & header__nav{
+        & header__nav {
             display: none;
         }
     }
@@ -194,7 +194,7 @@
 
         &-text {
             overflow-y: scroll;
-            height: 30dvh;
+            height: 25dvh;
             margin: auto;
             font-size: fluid(30, 15);
 
@@ -205,7 +205,7 @@
 
         &-video {
             width: 100%;
-            height: 30dvh;
+            height: 25dvh;
             object-fit: cover;
 
             margin: 1dvh 0;
@@ -221,5 +221,95 @@
             height: fit-content;
         }
 
+    }
+
+    &__info {
+        @include container;
+        position: relative;
+
+        &-inner {
+            @include flex;
+            flex-direction: column;
+            gap: to-rem(20);
+
+            position: relative;
+            z-index: 30;
+
+            width: 40%;
+            height: fit-content;
+
+            text-align: left;
+
+            @include tablet {
+                width: 100%;
+            }
+        }
+
+        &-title {
+            font-size: fluid(75, 40);
+            width: 100%;
+        }
+
+        &-text {
+            font-size: fluid(30, 20);
+        }
+
+        &-link {
+            width: 40%;
+            font-size: fluid(30, 20);
+        }
+
+    }
+
+    &__film-background {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 57%;
+        height: 95%;
+        min-height: fit-content;
+        border: solid 2px var(--colorAccent);
+        border-right: none;
+        border-top: none;
+        border-top-left-radius: 25%;
+        border-bottom-left-radius: 25%;
+        z-index: 1;
+        object-fit: cover;
+
+        -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+        -moz-box-shadow: 3px 3px 7px 3px var(--colorAccent);
+        box-shadow: 3px 3px 7px 3px var(--colorAccent);
+
+        @include tablet {
+            position: relative;
+            width: 100%;
+            border: none;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+
+            @include mobile-s {
+                height: 150px;
+            }
+
+
+        }
+
+    }
+
+    &.film {
+        min-height: fit-content;
+
+        @include tablet {
+            height: fit-content;
+        }
+
+        & .header .header__nav {
+            background-color: transparent;
+        }
     }
 }

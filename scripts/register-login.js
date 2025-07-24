@@ -43,11 +43,20 @@ const registerCloseBtn = document.querySelector('.register__close');
 const login = document.querySelector('.login');
 const loginCloseBtn = document.querySelector('.login__close');
 const registerOpenBtn = document.querySelector('.login__register-link');
+const accauntChangeBtn = document.querySelector('.accaunt__info-btn');
 
 accauntBtn.addEventListener('click', ()=>{
     document.body.style.overflow = 'hidden';
     login.style.display = 'block';
 });
+
+if(accauntChangeBtn){
+accauntChangeBtn.addEventListener('click', ()=>{
+    document.body.style.overflow = 'hidden';
+    register.style.display = 'block';
+});
+};
+
 
 registerCloseBtn.addEventListener('click',()=>{
     document.body.style.overflow = 'scroll';

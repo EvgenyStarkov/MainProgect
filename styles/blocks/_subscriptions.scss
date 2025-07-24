@@ -1,0 +1,90 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.subscriptions {
+    &__inner {
+        @include container;
+
+        margin-block: to-rem(45);
+    }
+
+    &__title{
+        font-size: fluid(40, 25);
+    }
+
+    &__item {
+        @include flex;
+        justify-content: space-between;
+
+        height: fit-content;
+        margin-block: to-rem(30);
+
+        padding: to-rem(25);
+        box-sizing: border-box;
+
+
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+
+        font-size: fluid(35, 25);
+
+        @include mobile {
+            padding: to-rem(15);
+        }
+
+        @include mobile-s {
+            padding: to-rem(7.5);
+        }
+    }
+
+    &__shop {
+        padding: to-rem(25);
+        box-sizing: border-box;
+
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+
+        &-list {
+            margin-top: to-rem(35);
+        }
+
+        &-item {
+            @include flex;
+            justify-content: space-between;
+            align-items: end;
+
+            margin-bottom: to-rem(20);
+            border-bottom: var(--colorAccent) 1px solid;
+
+            @include mobile{
+                    display: block;
+                }
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &-title{
+                font-size: fluid(35, 25);
+            }
+
+            &-content{
+                height: 100%;
+                width: 70%;
+
+                padding-block: to-rem(15);
+                box-sizing: border-box;
+
+                @include mobile{
+                    width: 100%;
+                }
+            }
+        }
+
+        &-price {
+            margin-top: to-rem(25);
+            font-size: fluid(40, 25);
+        }
+    }
+}  

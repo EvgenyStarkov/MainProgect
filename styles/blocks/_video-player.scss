@@ -1,0 +1,199 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.video-player {
+    @include flex;
+    display: none;
+    width: 100%;
+    height: 100dvh;
+    min-height: 500px;
+
+    &:fullscreen {
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        & .video-player__video {
+            width: 100% !important;
+            height: 85% !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        & .video-player__inner {
+            width: 100% !important;
+            height: 85% !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+    }
+
+
+    &__inner {
+        position: relative;
+        width: 70%;
+        min-width: 320px;
+        min-height: 180px;
+
+
+
+    }
+
+    &__video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        border: var(--colorAccent) 5px solid;
+        border-radius: var(--borderMain);
+
+
+        -webkit-box-shadow: 5px 5px 10px 5px var(--colorAccent);
+        -moz-box-shadow: 5px 5px 10px 5px var(--colorAccent);
+        box-shadow: 5px 5px 10px 5px var(--colorAccent);
+    }
+
+    &__controls {
+        @include flex;
+        justify-content: space-between;
+        gap: 10px;
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+
+        width: 80%;
+        height: 40px;
+        margin: auto;
+
+        padding: 0 10px;
+        box-sizing: border-box;
+
+        &-item {
+            @include flex;
+            align-items: center;
+            height: 100%;
+
+            &:nth-child(1) {
+                width: fit-content;
+            }
+
+            &:nth-child(2) {
+                width: 45%;
+            }
+
+            &:nth-child(3) {
+                width: fit-content;
+            }
+
+            &:nth-child(4) {
+                width: 25%;
+            }
+        }
+
+        &-input {
+            width: 100%;
+
+            margin: 0;
+            height: 5px;
+
+            border-radius: 2px;
+            accent-color: var(--colorAccent);
+        }
+
+
+
+    }
+
+    &__serias {
+        @include flex;
+        justify-content: start;
+
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        z-index: 10;
+
+        width: 10%;
+        max-height: to-rem(25);
+
+        padding: to-rem(10);
+        padding-right: to-rem(50);
+
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+
+        color: var(--colorLight);
+        font-size: fluid(20, 14);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: to-rem(15);
+
+            width: to-rem(20);
+            height: to-rem(20);
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url(../../assets/icons/next.svg);
+
+            transform: translateY(-50%) rotate(90deg);
+            z-index: 30;
+            pointer-events: none;
+            transition: all 1s ease;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                outline: to-rem(2) var(--colorAccent) solid;
+                outline-offset: to-rem(5);
+            }
+        }
+
+        &:focus-visible {
+            outline: to-rem(2) var(--colorAccent) solid;
+            outline-offset: to-rem(5);
+        }
+
+        &:focus-within::after {
+            transform: translateY(-50%) rotate(270deg);
+        }
+
+        &-list {
+            @include flex;
+
+            border: none;
+            background-color: transparent;
+            color: var(--colorLight);
+            appearance: none;
+            max-height: fit-content;
+
+            color: var(--colorLight);
+            font-size: fluid(20, 14);
+
+            &::-webkit-scrollbar {
+                width: 0px;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+        }
+    }
+
+    .hero.clip & {
+        display: flex;
+    }
+}

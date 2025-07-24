@@ -8,9 +8,6 @@
 
         margin: to-rem(35) auto;
 
-        @include tablet {
-            width: 100%;
-        }
 
         &-title {
             @include mobile {
@@ -66,7 +63,10 @@
                 -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccent);
                 -moz-box-shadow: 3px 3px 7px 3px var(--colorAccent);
                 box-shadow: 3px 3px 7px 3px var(--colorAccent);
+            }
 
+            &.music .collections__item-link-img{
+                width: fluid(600, 300);
             }
 
             &-img {

@@ -4,15 +4,34 @@
 
 .filter {
     @include flex;
-    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    gap: fluid(35,15);
+    gap: fluid(35, 15);
     margin-top: to-rem(35);
+    padding: to-rem(30);
+    box-sizing: border-box;
+
+    @include laptop-s {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        gap: to-rem(5);
+
+        width: fit-content;
+
+        margin: auto;
+        padding: to-rem(20) to-rem(7);
+    }
+
+    @include mobile {
+        @include flex;
+        flex-direction: column;
+        width: 100%;
+    }
 
     &__select {
         @include flex;
-        
+
         border: none;
         background-color: transparent;
         color: var(--colorLight);
@@ -30,11 +49,13 @@
             outline: none;
         }
 
+
         &-label {
             @include flex;
 
             position: relative;
             width: fit-content;
+            max-width: 100%;
             max-height: to-rem(25);
 
             padding: to-rem(10);
@@ -45,6 +66,16 @@
 
             color: var(--colorLight);
             font-size: fluid(20, 14);
+
+            @include laptop-s {
+                width: fluid(500, 125);
+            }
+
+            @include mobile{
+                width: 50%;
+                min-width: 280px;
+                padding: 15px;
+            }
 
             &::after {
                 content: '';
@@ -102,6 +133,7 @@
         background-color: var(--colorDarkAlt);
         border-radius: var(--borderMin);
         border: none;
+        grid-column: 1/-1;
 
         &:active {
             border: none;

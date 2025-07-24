@@ -1,0 +1,42 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.accaunt {
+    &__header {
+        @include flex;
+        justify-content: space-around;
+        gap: to-rem(75);
+
+        @include container;
+
+        height: fit-content;
+        margin-block: to-rem(30);
+
+        padding-block: to-rem(25);
+
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+    }
+
+    &__main-info {
+        @include flex;
+        gap: to-rem(50);
+    }
+
+    &__subscriptions {
+        @include flex;
+        justify-content: space-around;
+        gap: to-rem(75);
+
+        @include container;
+
+        height: fit-content;
+
+        padding-block: to-rem(25);
+
+        background-color: var(--colorDarkAlt);
+        border-radius: var(--borderMin);
+    }
+
+}
