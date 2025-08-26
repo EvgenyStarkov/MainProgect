@@ -13,8 +13,12 @@
         flex-wrap: wrap-reverse
     }
 
+  &__item form button{
+    color: var(--colorLight);
+    font-size: fluid(20, 14);
+  }
 
-    &__item {
+  &__item {
         @include flex;
 
         position: relative;

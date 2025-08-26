@@ -1,0 +1,45 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.film-actors {
+  @include container;
+  margin-block: to-rem(45);
+
+
+  &__inner{
+    @include  flex;
+    justify-content: start;
+    gap: 45px;
+
+    padding: to-rem(35);
+    box-sizing: border-box;
+  }
+
+  &__item{
+    @include flex;
+    flex-direction: column;
+
+    width: to-rem(80);
+    min-width: fit-content;
+    height: to-rem(120);
+    min-height: fit-content;
+
+    padding: to-rem(25);
+    box-sizing: border-box;
+
+    background-color: var(--colorDarkAlt);
+    border-radius: var(--borderMin);
+
+  }
+
+  &__img {
+    width: fluid(70, 30);
+    height: fluid(70, 30);
+
+    margin-block:to-rem(15) ;
+    border-radius: 100%;
+    border: 2px solid var(--colorAccentAlt);
+  }
+
+}

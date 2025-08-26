@@ -3,6 +3,11 @@
 @use '../mixins' as *;
 
 .accaunt {
+    &__avatar{
+        width: fluid(80, 30);
+        height: fluid(80, 30);
+        border-radius: 100%;
+    }
     &__header {
         @include flex;
         justify-content: space-around;
@@ -17,11 +22,19 @@
 
         background-color: var(--colorDarkAlt);
         border-radius: var(--borderMin);
+
+        @include mobile{
+            flex-direction: column;
+            align-items: start;
+            gap:to-rem(15);
+            padding: to-rem(15);
+            box-sizing: border-box;
+        }
     }
 
     &__main-info {
         @include flex;
-        gap: to-rem(50);
+        gap: fluid(80,20);
     }
 
     &__subscriptions {
@@ -37,6 +50,14 @@
 
         background-color: var(--colorDarkAlt);
         border-radius: var(--borderMin);
+
+        @include mobile{
+            flex-direction: column;
+            align-items: start;
+            gap:to-rem(15);
+            padding: to-rem(15);
+            box-sizing: border-box;
+        }
     }
 
 }

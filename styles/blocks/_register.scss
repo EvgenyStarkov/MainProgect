@@ -103,31 +103,9 @@
         display: block;
     }
 
-    &__input {
+    &__input{
         width: 100%;
         height: to-rem(40);
-        padding: to-rem(10);
-        box-sizing: border-box;
-
-        margin: to-rem(10) 0;
-
-        background-color: transparent;
-        border: to-rem(2) var(--colorAccentAlt) solid;
-        border-radius: var(--borderMain);
-
-        color: var(--colorLight);
-
-        &:focus,
-        &:hover,
-        &:active {
-            border: to-rem(2) var(--colorAccent) solid;
-            background-color: transparent;
-        }
-
-        &:focus {
-            outline: to-rem(2) var(--colorAccent) solid;
-            outline-offset: 5px;
-        }
     }
 
     &__close {

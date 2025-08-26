@@ -13,6 +13,10 @@
 
     background-color: var(--colorDarkAlt);
 
+    &__menu form{
+        display: inline;
+    }
+
 
     &__inner {
         @include flex;
@@ -54,6 +58,7 @@
     &__accaunt-img {
         width: fluid(40, 20);
         height: fluid(40, 20);
+        border-radius: var(--borderMain)
     }
 
     &__nav {

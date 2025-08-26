@@ -187,6 +187,10 @@
         display: none;
         margin: auto;
 
+        &:first-child{
+            display: block;
+        }
+
         &-title {
             width: 30%;
             font-size: fluid(45, 25);

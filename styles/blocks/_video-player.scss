@@ -134,6 +134,10 @@
         color: var(--colorLight);
         font-size: fluid(20, 14);
 
+        &:nth-child(2){
+            left: 25%;
+        }
+
         &::after {
             content: '';
             position: absolute;

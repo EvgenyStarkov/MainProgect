@@ -16,7 +16,6 @@ const registerSubmit = document.querySelector('.register__submit');
 console.log(registerSubmit, 'submit');
 
 registerSubmit.addEventListener('click', (event) => {
-    event.preventDefault();
     console.log('submit click');
 
     let registerName = document.getElementById('rName').value;

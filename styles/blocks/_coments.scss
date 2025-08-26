@@ -4,8 +4,6 @@
 
 .coments {
     @include container;
-    padding: 30px;
-    box-sizing: border-box;
 
     &__body {
         overflow: scroll;
@@ -60,6 +58,13 @@
 
         &-content {
             grid-column: 1/-1;
+        }
+
+        &-img{
+            width: 75px;
+            height: 75px;
+            margin-bottom: 20px;
+            border-radius: 100%;
         }
     }
 }

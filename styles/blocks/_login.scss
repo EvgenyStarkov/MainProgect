@@ -12,6 +12,7 @@
     width: 100%;
     height: 100dvh;
 
+
     &::after {
         content: '';
         position: absolute;
@@ -163,5 +164,11 @@
         &-label{
             @include visually-hidden;
         }
+
+    }
+
+    &__register-link{
+        cursor: pointer;
+        color: var(--colorAccent);
     }
 }

@@ -144,6 +144,24 @@ label {
   color: var(--colorAccentAlt);
 }
 
+input, textarea {
+  padding: 0.625rem;
+  box-sizing: border-box;
+  margin: 0.625rem 0;
+  background-color: transparent;
+  border: 0.125rem var(--colorAccentAlt) solid;
+  border-radius: var(--borderMain);
+  color: var(--colorLight);
+}
+input:focus, input:hover, input:active, textarea:focus, textarea:hover, textarea:active {
+  border: 0.125rem var(--colorAccent) solid;
+  background-color: transparent;
+}
+input:focus, textarea:focus {
+  outline: 0.125rem var(--colorAccent) solid;
+  outline-offset: 5px;
+}
+
 input::placeholder {
   color: var(--colorLightAlt2);
   font-size: clamp(0.625rem, 0.5242768595rem + 0.4132231405vw, 0.9375rem);
@@ -248,21 +266,6 @@ input::placeholder {
 .register__input {
   width: 100%;
   height: 2.5rem;
-  padding: 0.625rem;
-  box-sizing: border-box;
-  margin: 0.625rem 0;
-  background-color: transparent;
-  border: 0.125rem var(--colorAccentAlt) solid;
-  border-radius: var(--borderMain);
-  color: var(--colorLight);
-}
-.register__input:focus, .register__input:hover, .register__input:active {
-  border: 0.125rem var(--colorAccent) solid;
-  background-color: transparent;
-}
-.register__input:focus {
-  outline: 0.125rem var(--colorAccent) solid;
-  outline-offset: 5px;
 }
 .register__close {
   display: flex;
@@ -536,6 +539,9 @@ input::placeholder {
   display: none;
   margin: auto;
 }
+.hero__slide:first-child {
+  display: block;
+}
 .hero__slide-title {
   width: 30%;
   font-size: clamp(1.5625rem, 1.159607438rem + 1.652892562vw, 2.8125rem);
@@ -652,6 +658,9 @@ input::placeholder {
   height: 4.6875rem;
   background-color: var(--colorDarkAlt);
 }
+.header__menu form {
+  display: inline;
+}
 .header__inner {
   display: flex;
   align-items: center;
@@ -687,6 +696,7 @@ input::placeholder {
 .header__search-img, .header__accaunt-img {
   width: clamp(1.25rem, 0.847107438rem + 1.652892562vw, 2.5rem);
   height: clamp(1.25rem, 0.847107438rem + 1.652892562vw, 2.5rem);
+  border-radius: var(--borderMain);
 }
 .header__nav {
   display: flex;
@@ -946,6 +956,19 @@ input::placeholder {
     box-sizing: border-box;
   }
 }
+.collections__item-body.grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  overflow-x: hidden;
+  height: 100dvh;
+  min-height: fit-content;
+  padding: 15px;
+  box-sizing: border-box;
+}
 .collections__item-btn {
   background-color: transparent;
   border: none;
@@ -959,9 +982,12 @@ input::placeholder {
   outline: none;
 }
 .collections__item-link {
+  position: relative;
+  display: inline-block;
+  border-radius: var(--borderAlt);
   width: fit-content;
   height: fit-content;
-  border-radius: var(--borderAlt);
+  background-color: transparent;
 }
 .collections__item-link:hover {
   -webkit-box-shadow: 3px 3px 7px 3px var(--colorAccent);
@@ -972,9 +998,13 @@ input::placeholder {
   width: clamp(18.75rem, 12.7066115702rem + 24.7933884298vw, 37.5rem);
 }
 .collections__item-link-img {
+  position: relative;
   width: clamp(6.25rem, 4.2355371901rem + 8.2644628099vw, 12.5rem);
   height: clamp(9.375rem, 6.3533057851rem + 12.3966942149vw, 18.75rem);
   border-radius: var(--borderAlt);
+  display: block;
+  object-fit: cover;
+  z-index: 1;
 }
 
 .footer {
@@ -1181,6 +1211,10 @@ input::placeholder {
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
 }
+.login__register-link {
+  cursor: pointer;
+  color: var(--colorAccent);
+}
 
 .filter {
   display: flex;
@@ -1325,6 +1359,10 @@ input::placeholder {
     flex-wrap: wrap-reverse;
   }
 }
+.film-stats__item form button {
+  color: var(--colorLight);
+  font-size: clamp(0.875rem, 0.7541322314rem + 0.4958677686vw, 1.25rem);
+}
 .film-stats__item {
   display: flex;
   align-items: center;
@@ -1437,8 +1475,6 @@ input::placeholder {
   width: 90%;
   max-width: 1500px;
   margin: auto;
-  padding: 30px;
-  box-sizing: border-box;
 }
 .coments__body {
   overflow: scroll;
@@ -1479,6 +1515,12 @@ input::placeholder {
 }
 .coments__item-content {
   grid-column: 1/-1;
+}
+.coments__item-img {
+  width: 75px;
+  height: 75px;
+  margin-bottom: 20px;
+  border-radius: 100%;
 }
 
 .video-player {
@@ -1589,6 +1631,9 @@ input::placeholder {
   color: var(--colorLight);
   font-size: clamp(0.875rem, 0.7541322314rem + 0.4958677686vw, 1.25rem);
 }
+.video-player__serias:nth-child(2) {
+  left: 25%;
+}
 .video-player__serias::after {
   content: "";
   position: absolute;
@@ -1640,6 +1685,11 @@ input::placeholder {
   display: flex;
 }
 
+.accaunt__avatar {
+  width: clamp(1.875rem, 0.867768595rem + 4.132231405vw, 5rem);
+  height: clamp(1.875rem, 0.867768595rem + 4.132231405vw, 5rem);
+  border-radius: 100%;
+}
 .accaunt__header {
   display: flex;
   align-items: center;
@@ -1655,11 +1705,20 @@ input::placeholder {
   background-color: var(--colorDarkAlt);
   border-radius: var(--borderMin);
 }
+@media (max-width: 800px) {
+  .accaunt__header {
+    flex-direction: column;
+    align-items: start;
+    gap: 0.9375rem;
+    padding: 0.9375rem;
+    box-sizing: border-box;
+  }
+}
 .accaunt__main-info {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.125rem;
+  gap: clamp(1.25rem, 0.041322314rem + 4.958677686vw, 5rem);
 }
 .accaunt__subscriptions {
   display: flex;
@@ -1674,6 +1733,15 @@ input::placeholder {
   padding-block: 1.5625rem;
   background-color: var(--colorDarkAlt);
   border-radius: var(--borderMin);
+}
+@media (max-width: 800px) {
+  .accaunt__subscriptions {
+    flex-direction: column;
+    align-items: start;
+    gap: 0.9375rem;
+    padding: 0.9375rem;
+    box-sizing: border-box;
+  }
 }
 
 .subscriptions__inner {
@@ -1751,6 +1819,43 @@ input::placeholder {
 .subscriptions__shop-price {
   margin-top: 1.5625rem;
   font-size: clamp(1.5625rem, 1.2603305785rem + 1.2396694215vw, 2.5rem);
+}
+
+.film-actors {
+  width: 90%;
+  max-width: 1500px;
+  margin: auto;
+  margin-block: 2.8125rem;
+}
+.film-actors__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  gap: 45px;
+  padding: 2.1875rem;
+  box-sizing: border-box;
+}
+.film-actors__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 5rem;
+  min-width: fit-content;
+  height: 7.5rem;
+  min-height: fit-content;
+  padding: 1.5625rem;
+  box-sizing: border-box;
+  background-color: var(--colorDarkAlt);
+  border-radius: var(--borderMin);
+}
+.film-actors__img {
+  width: clamp(1.875rem, 1.069214876rem + 3.305785124vw, 4.375rem);
+  height: clamp(1.875rem, 1.069214876rem + 3.305785124vw, 4.375rem);
+  margin-block: 0.9375rem;
+  border-radius: 100%;
+  border: 2px solid var(--colorAccentAlt);
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 if (!isElementInViewport(heroSection)) {
                     header.classList.add('sticky-header');
-                    // Показываем нав только если мы в collections
+                    // Показываем нав только если мы в collection
                     if (!isElementInViewport(menuSection) && 
                         !isElementInViewport(freshHitsSection)) {
                         nav.style.display = 'flex';
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Дополнительный обработчик скролла для точного контроля
     window.addEventListener('scroll', () => {
         if (header.classList.contains('sticky-header')) {
-            // Показываем нав только в collections
+            // Показываем нав только в collection
             if (isElementInViewport(menuSection) || 
                 isElementInViewport(freshHitsSection) ||
                 isElementInViewport(heroSection)) {

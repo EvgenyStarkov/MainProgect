@@ -58,14 +58,11 @@ moreLeftBtn.addEventListener('click', ()=>{
 })
 
 moreRightBtn.addEventListener('click', ()=>{
-    if (currentSlide < slides.length - 1) {
+    if (currentSlide < slides.length) {
         slideSwitch(1);
         console.log(currentSlide)
     }
 });
-
-slideSwitch(1);
-slideSwitch(-1);
 
 paginationMenu.addEventListener('click', (event) => {
     if (event.target.dataset.set != undefined) {
