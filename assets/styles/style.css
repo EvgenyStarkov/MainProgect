@@ -960,7 +960,7 @@ input::placeholder {
   display: grid;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 35px;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr 1fr;
   overflow-x: hidden;

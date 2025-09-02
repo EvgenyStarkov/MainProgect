@@ -4,7 +4,7 @@
 
 $pageTitle = 'MEGFILMS || ПОДПИСКИ';
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/header.php';
+require_once 'header.php';
 
 if (isset($_SESSION['userId'])) {
 
@@ -108,7 +108,7 @@ if (isset($_SESSION['userId'])) {
     </div>
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/footer.php';
+require_once 'footer.php';
 
 } else {
     echo "Ошибка подключения к акаунту, попробуйте перезойти в ваш аккаунт";

@@ -34,12 +34,12 @@ window.addEventListener('error', (event) => {
 
     // Иконки
     const icons = {
-        play: './assets/icons/Play.svg',
-        pause: './assets/icons/Pause.svg',
-        sound: './assets/icons/Sound.svg',
-        mute: './assets/icons/Mute.svg',
-        fullscreen: './assets/icons/Full Screen.svg',
-        exitFullscreen: './assets/icons/Normal Screen.svg'
+        play: '/assets/icons/Play.svg',
+        pause: '/assets/icons/Pause.svg',
+        sound: '/assets/icons/Sound.svg',
+        mute: '/assets/icons/Mute.svg',
+        fullscreen: '/assets/icons/Full Screen.svg',
+        exitFullscreen: '/assets/icons/Normal Screen.svg'
     };
 
     // Переменные состояния
@@ -89,6 +89,7 @@ window.addEventListener('error', (event) => {
 
                 const episodeId = parseInt(this.value);
                 const episode = seasonsData[season].find(ep => ep.id === episodeId);
+                console.log(episode, 'эпизоды')
 
                 if (episode) {
                     setCurrentEpisode(episode);
@@ -194,7 +195,7 @@ window.addEventListener('error', (event) => {
 
         // Обновляем источник видео
         if (episode.video) {
-            video.src = './' + episode.video;
+            video.src = '/' + episode.video;
             video.load();
         } else {
             console.error('URL видео не указан для эпизода', episode);
