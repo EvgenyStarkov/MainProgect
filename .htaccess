@@ -1,1 +1,16 @@
-DirectoryIndex /views/index/index.php
+RewriteEngine On
+
+# Перенаправляем все запросы на фронт-контроллер (index.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /controllers/FrontController.php [QSA,L]
+
+# Дополнительные настройки для корректной работы
+Options -Indexes
+DirectoryIndex /controllers/FrontController.php
+
+# Настройки для PHP (если нужно)
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 20M
+    php_value post_max_size 20M
+</IfModule>

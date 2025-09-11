@@ -1858,4 +1858,25 @@ input::placeholder {
   border: 2px solid var(--colorAccentAlt);
 }
 
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+}
+.error__title {
+  max-width: 100%;
+  text-align: center;
+  color: var(--colorAccent);
+  font-size: clamp(6.25rem, 0.2066115702rem + 24.7933884298vw, 25rem);
+}
+.error__text {
+  max-width: 90%;
+  text-align: center;
+  color: var(--colorAccentAlt);
+  font-size: clamp(1.5625rem, 0.0516528926rem + 6.1983471074vw, 6.25rem);
+}
+
 /*# sourceMappingURL=style.css.map */

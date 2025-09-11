@@ -1,50 +1,8 @@
 <?php
 
-/* @var $m */
-/* @var $contentType */
-
-session_start();
-
-$user = [
-        'id' => 'none'
-];
-
-if (isset($_SESSION['userId'])) {
-    $user = $m->getUser($_SESSION['userId']);
-}
-
-$video = $m->getContent($_GET['id']);
-$pageTitle = 'MEGAFILMS || ' . mb_strtoupper($video['title']);
-
-if($contentType == 'музыкальный клип'){
-    $heroType = 'clip';
-} else {
-    $heroType = 'film';
-}
-
-if (isset($_SESSION['errorRegister'])) {
-    ?>
-    <script>
-        alert("Произошла ошибка регистрации, аккаунт с указанным номером телефона или указаной электронной почтой уже существует. Попробуйте зарегистрироватся заново или обратитесь в службу поддержки")
-    </script>
-    <?php
-    $_SESSION['errorRegister'] = null;
-}
-if (isset($_SESSION['errorLogin'])) {
-    ?>
-    <script>
-        alert("Неверно указан логин или пароль")
-    </script> <?php
-    $_SESSION['errorLogin'] = null;
-}
-if (isset($_SESSION['userId'])) {
-    $user = $m->getUser($_SESSION['userId']);
-    if ($user['role'] == 'admin') { ?>
-        <h1>Добро пожаловать в админ панель!!! </h1>
-        <a href="/controllers/AdminController.php" class="button"> Перейти в редактор </a>
-    <?php }
-}
-
+/* @var $pageTitle */
+/* @var $heroType */
+/* @var $user */
 
 ?>
 

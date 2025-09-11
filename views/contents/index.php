@@ -1,15 +1,15 @@
 <?php
 
-/* @var $m */
 /* @var $contentType */
+/* @var $genres */
+/* @var $countries */
+/* @var $years */
 
-if (isset($_GET['type'])) {
+if (isset($contentType)) {
 
     require_once 'header.php';
 
-    $genres = $m->getAllGenresOnType($contentType);
-    $years = $m->getAllYearsOnType($contentType);
-    $countries = $m->getAllCountrysOnType($contentType);
+
     ?>
 
     <!-- Форма фильтрации -->
@@ -62,12 +62,7 @@ if (isset($_GET['type'])) {
 
     <?php
 
-    if (isset($_POST['genre']) || isset($_POST['country']) || isset($_POST['year'])) {
-        $genre = empty($_POST['genre']) ? null : $_POST['genre'];
-        $country = empty($_POST['country']) ? null : $_POST['country'];
-        $year = empty($_POST['year']) ? null : (int)$_POST['year'];
-        $orderBy = empty($_POST['orderBy']) ? 'year_desc' : $_POST['orderBy'];
-        $filtered = $m->getFilteredContent($genre, $country, $year, $orderBy, $contentType);
+    if (isset($filtered)) {
 
         require_once 'filtered.php';
 
@@ -75,10 +70,7 @@ if (isset($_GET['type'])) {
 
         require_once 'collections.php';
 
-    } ?>
-
-    <?php
-
+    }
 
     require_once 'footer.php';
 

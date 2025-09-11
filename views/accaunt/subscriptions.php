@@ -57,55 +57,7 @@ if (isset($_SESSION['userId'])) {
     $subscriptions = $m->getUserSubscriptions($user['id']);
     $suggestedSubscriptions = $m->getAvailableSubscriptions($user['id']);
     ?>
-    <div class="subscriptions">
-        <div class="subscriptions__inner">
 
-            <?php if (count($subscriptions) > 0) { ?>
-
-                <h2 class="subscriptions__title h1">Ваши подписки</h2>
-                <ul class="subcriptions__list">
-                    <?php foreach ($subscriptions as $sb) {
-
-                        $date = $m->getUserSubscriptionExpirationDate($user['id'], $sb['id']) ?>
-
-                        <li class="subscriptions__item ">
-                            <h2 class="h1"><?= $sb['title'] ?></h2>
-                            Цена: <?= $sb['price'] ?>р
-                            <br><br>
-                            Дата оканчания: <?= $date ?>
-                            <form method="post" action="subscriptions.php">
-                            <button type="submit" class="button subscriptions__item-btn" name="subDelete" value="<?= $sb['id'] ?>">Отключить</button>
-                            </form>
-                        </li>
-
-                    <?php } ?>
-                </ul>
-
-            <?php } ?>
-
-            <div class="subscriptions__shop">
-                <h2 class="subscriptions__title h1">Наши подписки</h2>
-                <ul class="subscriptions__shop-list">
-                    <?php foreach ($suggestedSubscriptions as $sg) { ?>
-
-                        <li class="subscriptions__shop-item">
-                            <div class="subscriptions__shop-item-content">
-                                <h2 class="subscriptions__shop-item-title h1"><?= $sg['title'] ?></h2>
-                                <p><?= $sg['description'] ?></p>
-                                <div class="subscriptions__shop-price"><?= $sg['price'] ?>р</div>
-                            </div>
-                            <form method="post" action="subscriptions.php">
-                                <button class="button subscriptions__item-btn" name="subBuy" value="<?= $sg['id'] ?>">
-                                    Подключить
-                                </button>
-                            </form>
-                        </li>
-
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-    </div>
 <?php
 
 require_once 'footer.php';

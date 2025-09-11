@@ -2,7 +2,7 @@
 
 /*  @var $m */
 
-$collections = $m->getAllCollections();
+/* @var $collections */
 
 if(count($collections) > 0){
 ?>
@@ -19,9 +19,7 @@ if(count($collections) > 0){
 
                 <?php
 
-                $collectionContent = $m->getContentOnCollection($c['id']);
-
-                foreach ($collectionContent as $cc) {
+                foreach ($c['content'] as $cc) {
                     $count = 0;
                     ?>
 
@@ -33,12 +31,11 @@ if(count($collections) > 0){
                     }
                     $count++;
                 }
-                if (count($collectionContent) > 10){
+                if (count($c['content']) > 10){
                 ?>
-                <form action="/views/collection/index.php" method="post">
-                    <button type="submit" class="collections__item-btn" name="collection" value="<?= $c['id'] ?>">
-                        <img src="../../assets/icons/next.svg" alt="" class="collections__item-btn-img">СМОТРЕТЬ БОЛЬШЕ
-                    </button> <?php
+                    <a  class="collections__item-btn" name="collection" href="/views/collection/?id=<?= $c['id'] ?>">
+                        <img src="/assets/icons/next.svg" alt="" class="collections__item-btn-img">СМОТРЕТЬ БОЛЬШЕ
+                    </a> <?php
                     } ?>
             </div>
         </div>

@@ -1,52 +1,11 @@
-<?php
-
-/* @var $pageTitle*/
-
-session_start();
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
-$m = new Model;
-
-$user = [
-    'id' => 'none'
-];
-
-if (isset($_SESSION['userId'])) {
-    $user = $m->getUser($_SESSION['userId']);
-}
-
-if (isset($_SESSION['errorRegister'])) {
-    ?>
-    <script>
-        alert("Произошла ошибка регистрации, аккаунт с указанным номером телефона или указаной электронной почтой уже существует. Попробуйте зарегистрироватся заново или обратитесь в службу поддержки")
-    </script>
-    <?php
-    $_SESSION['errorRegister'] = null;
-}
-if (isset($_SESSION['errorLogin'])) {
-    ?>
-    <script>
-        alert("Неверно указан логин или пароль")
-    </script> <?php
-    $_SESSION['errorLogin'] = null;
-}
-if (isset($_SESSION['userId'])) {
-    $user = $m->getUser($_SESSION['userId']);
-    if ($user['role'] == 'admin') { ?>
-        <h1>Добро пожаловать в админ панель!!! </h1>
-        <a href="/controllers/AdminController.php" class="button"> Перейти в редактор </a>
-    <?php }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=  $pageTitle ?></title>
+    <title>MEGFILMS || ВАШ АКАУНТ</title>
 
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/assets/styles/style.css">
     <link rel="icon" href="/assets/icons/logo.svg" type="image/x-icon">
 
     <script src="/assets/scripts/register-login.js" defer></script>

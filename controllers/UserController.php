@@ -12,9 +12,9 @@ class UserController
             $_SESSION['userId'] = $user['id'];
             if($user['role'] == 'admin'){
                 header("Location: ./AdminController.php");
-            } else {header("Location: /index.php");}
+            } else {header("Location: /home.php");}
         } else {
-            header("Location: /index.php");
+            header("Location: /home.php");
             $_SESSION['errorLogin'] = 1;
         }
     }
@@ -47,9 +47,9 @@ class UserController
             $m->addUser($_POST['name'], $_POST['userName'], $_POST['email'], $_POST['tel'], $_POST['password'], $consent);
             $user = $m->getUserForEmail($_POST['email'], $_POST['password']);
             $_SESSION['userId'] = $user['id'];
-            header("Location: /index.php");
+            header("Location: /home.php");
         } else {
-            header("Location: /index.php");
+            header("Location: /home.php");
             $_SESSION['errorRegister'] = 1;
         }
     }
@@ -189,19 +189,19 @@ class UserController
 
         if (isset($_POST['exit'])) {
             session_destroy();
-            header("Location: /index.php");
+            header("Location: /home.php");
         }
 
         if (isset($_POST['reId'])) {
             $this->updateUserStart();
-            header("Location: /views/accaunt/index.php");
+            header("Location: /views/accaunt/home.php");
         }
 
         if(isset($_POST['deId'])){
             $m = new Model;
             $m->deleteUser($_POST['deId']);
             session_destroy();
-            header("Location: /index.php");
+            header("Location: /home.php");
 
         }
 

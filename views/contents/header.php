@@ -1,63 +1,10 @@
 <?php
 
-session_start();
-
-require_once $_SERVER['DOCUMENT_ROOT'].'/model/Model.php';
-$m = new  Model;
-
-
-$contentType = $_GET['type'];
-
-$user = [
-    'id' => 'none'
-];
-
-if(isset($_SESSION['userId'])){
-   $user = $m->getUser($_SESSION['userId']);
-}
-
-switch ($contentType) {
-    case 'фильм':
-        $pageTitle = 'ФИЛЬМЫ';
-        break;
-    case 'сериал':
-        $pageTitle = 'СЕРИАЛЫ';
-        break;
-    case 'спортивное событие':
-        $pageTitle = 'СПОРТ';
-        break;
-    case "музыкальный клип":
-        $pageTitle = 'КЛИПЫ';
-        break;
-    default:
-        $allContentName = 'НЕИЗВЕСТНЫЙ РАЗДЕЛ';
-}
-
-if (isset($_SESSION['errorRegister'])) {
-    ?>
-    <script>
-        alert("Произошла ошибка регистрации, аккаунт с указанным номером телефона или указаной электронной почтой уже существует. Попробуйте зарегистрироватся заново или обратитесь в службу поддержки")
-    </script>
-    <?php
-    $_SESSION['errorRegister'] = null;
-}
-if (isset($_SESSION['errorLogin'])) {
-    ?>
-    <script>
-        alert("Неверно указан логин или пароль")
-    </script> <?php
-    $_SESSION['errorLogin'] = null;
-}
-if (isset($_SESSION['userId'])) {
-    $user = $m->getUser($_SESSION['userId']);
-    if ($user['role'] == 'admin') { ?>
-        <h1>Добро пожаловать в админ панель!!! </h1>
-        <a href="/controllers/AdminController.php" class="button"> Перейти в редактор </a>
-    <?php }
-}
+/* @var $pageTitle */
+/* @var $contentType */
+/* @var $user  */
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,7 +31,7 @@ if (isset($_SESSION['userId'])) {
 
 <header class="header">
     <div class="header__inner">
-        <a class="header__logo logo" href="/">
+        <a class="header__logo logo" href="/views/home/">
             <img src="/assets/icons/logo.svg" alt="" class="logo__img">
             <span class="logo__title">MEGAFILM </span>
         </a>

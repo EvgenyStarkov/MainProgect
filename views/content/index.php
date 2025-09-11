@@ -1,16 +1,20 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
-$m = new  Model;
+if (isset($video['id'])) {
 
-if (isset($_GET['id']) && isset($_GET['type'])) {
-
-    $contentType = $_GET['type'];
+   /* @var $contentType */
 
     require_once 'header.php';
 
     /* @var $video */
     /* @var $user */
+    /* @var $seasons */
+    /* @var $episodes */
+    /* @var $firstEpisode */
+    /* @var $members */
+    /* @var $recommendations */
+    /* @var $user */
+    /* @var $comments */
 
     if ($contentType != 'музыкальный клип') { ?>
         <video class="hero__film-background" autoplay muted loop playsinline>
@@ -23,13 +27,11 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
                 <p class="hero__info-text"><?= $video['description'] ?></p>
 
                 <?php
-                $userContentSubscriptions = $m->getUserContentSubscriptions($user['id'], $video['id']);
-                $contentSubscriptions = $m->getContentSubscriptions($video['id']);
                 if (isset($userContentSubscriptions)  || !isset($contentSubscriptions)) { ?>
                     <button class="button hero__info-link">Смотреть</button>
                 <?php } else { ?>
                     <div class="subscription-required">
-                        <?php if (!isset($user['id'])) { ?>
+                        <?php if ($user['id'] === 0) { ?>
                             <p>Данный контент являетс платным, пожалуйста зарегистрируйтесь или авторизуйтесь</p>
                         <?php } else { ?>
                             <p> Данный контент являетс платным,для просмотра его требуется одна из подписок:</p>
@@ -57,27 +59,7 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
                       <select class="video-player__serias-list" id="seasonSelect">
 
                           <?php
-                          $episodes = $m->getContentEpisodes($video['id']);
 
-                          print_r($episodes);
-
-                          // Формируем сезоны с строковыми ключами
-                          $seasons = [];
-                          foreach ($episodes as $episode) {
-                              $seasonKey = (string)$episode['season']; // Ключ как строка
-                              if (!isset($seasons[$seasonKey])) {
-                                  $seasons[$seasonKey] = [];
-                              }
-                              $seasons[$seasonKey][] = $episode;
-                          }
-
-                          // Получаем первый эпизод
-                          $firstEpisode = reset($episodes) ?: [
-                              'video' => '',
-                              'season' => '1', // Сезон как строка
-                              'number' => 1,
-                              'id' => 0
-                          ];
 
                            foreach ($seasons as $seasonNum => $seasonEpisodes){ ?>
 
@@ -117,23 +99,23 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
                   <?php } ?>
             <div class="video-player__controls">
                 <div class="video-player__controls-item play">
-                    <img src="../../assets/icons/Play.svg" alt="" class="video-player__controls-img">
+                    <img src="/assets/icons/Play.svg" alt="" class="video-player__controls-img">
                 </div>
                 <div class="video-player__controls-item progress">
                     <input type="range" class="video-player__controls-input">
                 </div>
                 <div class="video-player__controls-item time">00:00</div>
                 <div class="video-player__controls-item audio">
-                    <img src="../../assets/icons/Sound.svg" alt="" class="video-player__controls-img">
+                    <img src="/assets/icons/Sound.svg" alt="" class="video-player__controls-img">
                     <input type="range" class="video-player__controls-input">
                 </div>
                 <div class="video-player__controls-item full-scrin">
-                    <img src="../../assets/icons/Full%20Screen.svg" alt="" class="video-player__controls-img">
+                    <img src="/assets/icons/Full%20Screen.svg" alt="" class="video-player__controls-img">
                 </div>
             </div>
         <?php } else { ?>
               <div class="subscription-required">
-                  <?php if (!isset($user['id'])) { ?>
+                  <?php if ($user['id'] === 0) { ?>
                       <p>Данный контент являетс платным, пожалуйста зарегистрируйтесь или авторизуйтесь</p>
                   <?php } else { ?>
                       <p> Данный контент являетс платным,для просмотра его требуется одна из подписок:</p>
@@ -184,7 +166,6 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
 
 
             <?php
-            $members = $m->getMembersByContent($video['id']);
             if (!empty($members)){ ?>
                 <section class="film-actors">
                 <h1 class="film-actors__title">Актеры:</h1>
@@ -204,7 +185,6 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
             <?php }
 
             $count = 1;
-            $recommendations = $m->getContentRecommendations($video['id']);
 
             if (count($recommendations) > 0) { ?>
 
@@ -221,12 +201,7 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
                                         <img src="<?= '/' . $f['cover'] ?>" alt="<?= $f['title'] ?>" class="collections__item-link-img">
                                 </a>
 
-                                <?php
-                                if ($count >= 20) {
-                                    break;
-                                }
-                                $count++;
-                            } ?>
+                                <?php } ?>
                         </div>
                     </div>
                 </section>
@@ -235,15 +210,13 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
 
                     <?php
 
-                    $comments = $m->getContentComments($video['id']);
-
                     if (count($comments) > 0) { ?>
                         <h1 class="coments__title">Коментарии</h1>
                         <div class="coments__body">
                             <?php
                             foreach ($comments as $cm) {
 
-                                $user = $m->getUser($cm['user_id']);
+                                $user = $cm['commentsAuthor'];
                                 $avatar = "/assets/icons/Test Account.svg";
 
                                 if ($user['avatar'] != null && $user['avatar'] != '') {
@@ -260,10 +233,10 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
                         </div> <?php } else {
                         echo "<h1>Коментариев у этого фильма нет. Оставте первый коминтарий!!!</h1>";
                     } ?>
-                    <?php if (isset($_SESSION['userId'])) { ?>
-                        <form method="post" action="./video.php" >
+                    <?php if ($user['role'] != 'guest') { ?>
+                        <form method="post" action="/views/content/?id=<?= $video['id']?>&&type=<?= $contentType?>" >
                             <input type="text" class="coments__input" name="comContent">
-                            <button type="submit" class="coments__button button" name="comFilmId" value="<?=$video['id'] ?>">
+                            <button type="submit" class="coments__button button">
                                 Отправить коментарий
                             </button>
                         </form>

@@ -1,13 +1,8 @@
 <?php
 
-session_start();
-
-require_once  "../../model/Model.php";
+/* @var $user */
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
 $m = new Model;
-
-$user = [
-    'id' => 'none'
-];
 
 if (isset($_SESSION['errorRegister'])) {
     ?>
@@ -25,7 +20,6 @@ if (isset($_SESSION['errorLogin'])) {
     $_SESSION['errorLogin'] = null;
 }
 if (isset($_SESSION['userId'])) {
-    $user = $m->getUser($_SESSION['userId']);
     if ($user['role'] == 'admin') { ?>
         <h1>Добро пожаловать в админ панель!!! </h1>
         <a href="/controllers/AdminController.php" class="button"> Перейти в редактор </a>

@@ -1,4 +1,6 @@
-<?php require_once 'header.php';
+<?php
+
+require_once 'header.php';
 
 /* @var $m */
 
@@ -15,7 +17,7 @@ $backgroundVideo = '';
 
 <?php
 
-$slides = $m->getAllSlides();
+/* @var $slides */
 
 if (count($slides) > 0) {
 
@@ -33,7 +35,6 @@ if (count($slides) > 0) {
 
             <div class="hero__slides">
                 <?php
-                $slideCountPhp = 0;
                 foreach ($slides as $sl) {
                     ?>
                     <div class="hero__slide">
@@ -45,21 +46,14 @@ if (count($slides) > 0) {
                             </video>
                         <?php } ?>
                         <p class="hero__slide-text"><?= $sl['text'] ?></p>
-                        <?php if ($sl['link'] != 'none') { ?>
-                            <form method="post" action="<?= $sl['link'] ?>">
-                                <button name="filmFakeLink" type="submit" class="button hero__slide-link"
-                                        value="<?= $sl['content_id'] ?>">
+                        <?php if ($sl['content_id'] != 'none') { ?>
+                            <a class="button hero__slide-link" href="/views/content/?id=<?= $sl['content_id']?>&&type=<?= $cc['type'] ?>" value="<?= $sl['content_id'] ?>">
                                     Перейти
-                                </button>
-                            </form>
+                                </a>
                         <?php } ?>
                     </div>
 
                     <?php
-                    $slideCountPhp++;
-                    if ($slideCountPhp >= 7) {
-                        break;
-                    }
                 }
                 ?>
             </div>
@@ -71,6 +65,7 @@ if (count($slides) > 0) {
             <div class="hero__slider-pagination">
                 <?php
                 $pagNum = 1;
+
                 foreach ($slides as $sl) {
                     if ($pagNum == 1) {
                         $pagActive = 'is-active';
@@ -92,10 +87,9 @@ if (count($slides) > 0) {
 
 <?php
 
-$hits = $m->getAllHits();
+/* @var $hits */
 
 foreach ($hits as $h) {
-    $collection = $m->getCollection($h['collection_id']);
     ?>
     <section class="fresh-hits"
              style='background-image: url("<?= './' . $h['background'] ?>"); @media (max-width: 800px) {
@@ -103,26 +97,18 @@ foreach ($hits as $h) {
                      }'>
         <div class="fresh-hits__inner">
             <div class="fresh-hits__content">
-                <h1 class="fresh-hits__title"><?= $collection['title'] ?></h1>
+                <h1 class="fresh-hits__title"><?= $h['title'] ?></h1>
                 <p class="fresh-hits__text"><?= $h['text'] ?></p>
             </div>
             <div class="fresh-hits__list">
                 <?php
-
-                $content = $m->getContentOnCollection($h['collection_id']);
-                $count = 1;
-
-                foreach ($content as $cc) {
+                foreach ($h['content'] as $cc) {
                     ?>
                     <a class="collections__item-link"
-                       href="/views/content?id=<?= $cc['id'] ?>&&type=<?= $cc['type'] ?>">>
+                       href="/views/content?id=<?= $cc['id'] ?>">>
                         <img src="<?= $cc['cover'] ?>" alt="" class="fresh-hits__item">
                     </a>
                     <?php
-                    if ($count >= 7) {
-                        break;
-                    }
-                    $count++;
                 }
                 ?>
             </div>

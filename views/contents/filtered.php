@@ -2,25 +2,9 @@
 
 /* @var $filtered */
 /* @var $link */
-/* @var $genre */
-/* @var $year */
-/* @var $country */
+/* @var $filteredTitle */
 
 if(count($filtered) > 0){
-
-    $filteredTitle = '';
-
-    $filteredPost = [$genre , $year, $country];
-
-    foreach ($filteredPost as $fp){
-        if($fp != null) {
-            if ($filteredTitle == '') {
-                $filteredTitle = $filteredTitle . $fp;
-            } else {
-                $filteredTitle = $filteredTitle . ' , ' . $fp;
-            }
-        }
-    }
 
 ?>
 
