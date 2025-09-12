@@ -7,6 +7,7 @@
 if($user['id'] != 0){
 
     require_once './header.php'
+
     ?>
 
     <section class="accaunt">
@@ -87,5 +88,7 @@ if($user['id'] != 0){
 require_once 'footer.php';
 
 } else {
-    echo "<h1> Ошибка подключения к акаунту, попробуйте перезойти в ваш аккаунт</h1>";
+
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/views/404/index.php'; // Добавлено подключение  страницы ошибки если ользоваьель является гостем
+
 }

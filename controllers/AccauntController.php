@@ -1,6 +1,7 @@
 <?php
 
-namespace controllers;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/Controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/model/AccauntModel.php';
 
 class AccauntController extends Controller
 {
@@ -13,7 +14,7 @@ class AccauntController extends Controller
 
     public function getData($params)
     {
-        $m = new \Model;
+        $m = new \AccauntModel;
 
         $user = [
             'id' => null,

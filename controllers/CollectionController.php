@@ -1,6 +1,7 @@
 <?php
 
-namespace controllers;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/Controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
 
 class CollectionController extends Controller
 {
@@ -24,16 +25,23 @@ class CollectionController extends Controller
             $user = $m->getUser($_SESSION['userId']);
         }
 
-        $collection = $m->getCollection($params['id']);
-        $content = $m->getContentOnCollection($params['id']);
-        $pageTitle = $collection['title'];
+if(isset($params['id'])) { // Добавлена проверка на отсутствие $params['type'], чтобы не вызывало ошибку при неверном переходе
+    $collection = $m->getCollection($params['id']);
+    $content = $m->getContentOnCollection($params['id']);
+    $pageTitle = $collection['title'];
 
-        return [
-            'user' => $user,
-            'collection' => $collection,
-            'pageTitle' => $pageTitle,
-            'content' => $content
-        ];
+    return [
+        'user' => $user,
+        'collection' => $collection,
+        'pageTitle' => $pageTitle,
+        'content' => $content
+    ];
+
+} else {
+
+    return [];
+
+}
 
     }
 

@@ -1,12 +1,5 @@
 <?php
 
-namespace router;
-
-use controllers\ContentController;
-use controllers\ContentsController;
-use controllers\HomeController;
-use controllers\CollectionController;
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/HomeController.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/ContentController.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/ContentsController.php';

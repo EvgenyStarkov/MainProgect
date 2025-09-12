@@ -248,4 +248,8 @@ if (isset($video['id'])) {
 
     require_once 'footer.php';
 
-} else echo 'поста не получено';
+} else {
+
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/views/404/index.php'; // Добавлено подключение  страницы ошибки если не указан "id" в URL
+
+}

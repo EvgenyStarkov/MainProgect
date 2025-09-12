@@ -35,6 +35,6 @@ if(isset($collection)){
 require_once  'footer.php';
 
 } else{
-    echo "Ошибка перехода((((";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/views/404/index.php'; // Добавлено подключение  страницы ошибки если не указан "id" в URL
 }
 ?>

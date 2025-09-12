@@ -1,16 +1,15 @@
 <?php
 
-namespace controllers;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/Controller.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/model/ContentModel.php';
 
 class ContentController extends Controller
 {
     public function index($path, $params)
     {
         $data = $this->getData($params);
-        $this->addToDB($params,$data);
+        $this->addToDB($params, $data);
         $data = $this->getData($params);
         $this->render($path, $data);
     }
@@ -29,91 +28,94 @@ class ContentController extends Controller
             $user = $m->getUser($_SESSION['userId']);
         }
 
+        if (isset($params['id'])) { // Изменена проверка на отсутствие $params['id'], чтобы не вызывало ошибку при неверном переходе
 
-        $video = $m->getContent($params['id']);
-        $contentType = $video['type'];
+            $video = $m->getContent($params['id']);
+            $contentType = $video['type'];
 
-        $pageTitle = 'MEGAFILMS || ' . mb_strtoupper($video['title']);
+            $pageTitle = 'MEGAFILMS || ' . mb_strtoupper($video['title']);
 
-        if ($contentType == 'музыкальный клип') {
-            $heroType = 'clip';
-        } else {
-            $heroType = 'film';
-        }
+            if ($contentType == 'музыкальный клип') {
+                $heroType = 'clip';
+            } else {
+                $heroType = 'film';
+            }
 
-        $userContentSubscriptions = $m->getUserContentSubscriptions($user['id'], $video['id']);
-        $contentSubscriptions = $m->getContentSubscriptions($video['id']);
+            $userContentSubscriptions = $m->getUserContentSubscriptions($user['id'], $video['id']);
+            $contentSubscriptions = $m->getContentSubscriptions($video['id']);
 
-        $members = $m->getMembersByContent($video['id']);
+            $members = $m->getMembersByContent($video['id']);
 
-        $recommendations = $m->getContentRecommendations($video['id']);
+            $recommendations = $m->getContentRecommendations($video['id']);
 
-        $preComments = $m->getContentComments($video['id']);
+            $preComments = $m->getContentComments($video['id']);
 
 
-        $comments = [];
+            $comments = [];
 
-        foreach ($preComments as $cm) {
-            $commentsAuthor = $m->getUser($cm['user_id']);
+            foreach ($preComments as $cm) {
+                $commentsAuthor = $m->getUser($cm['user_id']);
 
-            $comments[] = [
-                'commentsAuthor' => $commentsAuthor,
-                'content' => $cm['content']
-            ];
-
-        }
-
-        $data = [
-            'user' => $user,
-            'contentType' => $contentType,
-            'video' => $video,
-            'pageTitle' => $pageTitle,
-            'heroType' => $heroType,
-            'userContentSubscriptions' => $userContentSubscriptions,
-            'contentSubscriptions' => $contentSubscriptions,
-            'members' => $members,
-            'recommendations' => $recommendations,
-            'comments' => $comments
-        ];
-
-        if ($contentType = 'сериал') {
-            $episodes = $m->getContentEpisodes($video['id']);
-
-            // Формируем сезоны с строковыми ключами
-            $seasons = [];
-            foreach ($episodes as $episode) {
-                $seasonKey = (string)$episode['season']; // Ключ как строка
-                if (!isset($seasons[$seasonKey])) {
-                    $seasons[$seasonKey] = [];
-                }
-                $seasons[$seasonKey][] = $episode;
-
-                // Получаем первый эпизод
-                $firstEpisode = reset($episodes) ?: [
-                    'video' => '',
-                    'season' => '1', // Сезон как строка
-                    'number' => 1,
-                    'id' => 0
+                $comments[] = [
+                    'commentsAuthor' => $commentsAuthor,
+                    'content' => $cm['content']
                 ];
-
-                $data['seasons'] = $seasons;
-                $data['episodes'] = $episodes;
-                $data['firstEpisode'] = $firstEpisode;
 
             }
 
-        }
+            $data = [
+                'user' => $user,
+                'contentType' => $contentType,
+                'video' => $video,
+                'pageTitle' => $pageTitle,
+                'heroType' => $heroType,
+                'userContentSubscriptions' => $userContentSubscriptions,
+                'contentSubscriptions' => $contentSubscriptions,
+                'members' => $members,
+                'recommendations' => $recommendations,
+                'comments' => $comments
+            ];
 
-        return $data;
+            if ($contentType = 'сериал') {
+                $episodes = $m->getContentEpisodes($video['id']);
+
+                // Формируем сезоны с строковыми ключами
+                $seasons = [];
+                foreach ($episodes as $episode) {
+                    $seasonKey = (string)$episode['season']; // Ключ как строка
+                    if (!isset($seasons[$seasonKey])) {
+                        $seasons[$seasonKey] = [];
+                    }
+                    $seasons[$seasonKey][] = $episode;
+
+                    // Получаем первый эпизод
+                    $firstEpisode = reset($episodes) ?: [
+                        'video' => '',
+                        'season' => '1', // Сезон как строка
+                        'number' => 1,
+                        'id' => 0
+                    ];
+
+                    $data['seasons'] = $seasons;
+                    $data['episodes'] = $episodes;
+                    $data['firstEpisode'] = $firstEpisode;
+
+                }
+
+            }
+
+            return $data;
+
+        } else return [];
 
     }
 
-    public function addToDB($params,$data)
+    public function addToDB($params, $data)
     {
 
         $m = new  \ContentModel;
         if (isset($params['comContent'])) {
-            $m->addComment($data['user']['id'], $data['video']['id'] ,  $params['comContent']);
+            $m->addComment($data['user']['id'], $data['video']['id'], $params['comContent']);
         }
 
         $m->updateViews($data['video']['id']);

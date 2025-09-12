@@ -75,6 +75,8 @@ if (isset($contentType)) {
     require_once 'footer.php';
 
 } else {
-    echo 'Вы перешли в несуществующий расдел';
+
+   require_once $_SERVER['DOCUMENT_ROOT'] . '/views/404/index.php'; // Добавлено подключение  страницы ошибки если не указан "type" в URL
+
 }
 ?>

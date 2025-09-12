@@ -16,7 +16,7 @@ parse_str($strGetParams, $getParams);
 $params = array_merge($postParams,$getParams);
 
 
-$router = new router\Router();
+$router = new Router;
 $router->redirect($path , $params);
 
 ?>

@@ -1,9 +1,7 @@
 <?php
 
-namespace controllers;
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/Controller.php';
-require_once  $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/model/HomeModel.php';
 
 
 class HomeController extends controller
