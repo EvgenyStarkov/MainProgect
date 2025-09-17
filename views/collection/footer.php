@@ -1,3 +1,5 @@
+<?php /* @var $path */ ?>
+<!-- footer -->
 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__logo logo">
@@ -45,8 +47,9 @@
         </div>
     </div>
 </footer>
+<!-- register -->
 <div class="register">
-    <form action="controllers/UserController.php" name="register" class="register__body" method="post">
+    <form action="<?= $path ?>?user=1&&id=<?= $video['id']?>" name="register" class="register__body" method="post">
         <div class="register__body-header">
             <h1 class="register__title"><b>РЕГИСТРАЦИЯ</b></h1>
             <label class="register__close-label" for="closeRegister">Закрыть окно
@@ -111,8 +114,9 @@
         <button type="submit" class="register__submit button">Зарегестрироватся</button>
     </form>
 </div>
+<!-- login -->
 <div class="login">
-    <form action="controllers/UserController.php" name="login" class="login__body" method="post">
+    <form action="<?= $path ?>?user=1&&id=<?= $video['id']?>" name="login" class="login__body" method="post">
         <div class="login__body-header">
             <h1 class="login__title"><b>ВХОД</b></h1>
             <label class="login__close-label" for="closeRegister">Закрыть окно

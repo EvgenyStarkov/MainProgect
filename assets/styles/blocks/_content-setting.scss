@@ -1,0 +1,60 @@
+@use 'sass:math' as *;
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.content-setting {
+  @include flex;
+  flex-direction: column;
+  gap: fluid(30,10);
+  margin-top: 15dvh;
+
+  &__table {
+    font-size: fluid(15, 10);
+    width: 90%;
+    border: 3px var(--colorAccent) solid;
+    border-collapse: collapse;
+
+    &-item {
+      max-width: 60px;
+      border: 1px var(--colorAccent) solid;
+
+    }
+
+    &-input{
+      border: none;
+      width: 90%;
+      overflow: hidden;
+
+      &:hover, &:focus, &:active, {
+        border: none;
+      }
+    }
+
+    &-video{
+      width: 50px;
+      height: 50px;
+    }
+
+  }
+
+  &__add{
+
+    &-form{
+      width: 90%;
+    }
+
+    &-body{
+      @include  flex;
+      justify-content: flex-start;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 30px ;
+    }
+
+    &-item{
+      @include  flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,30 +1,14 @@
 <?php
 
 /* @var $user */
-require_once  $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
-$m = new Model;
 
-if (isset($_SESSION['errorRegister'])) {
-    ?>
-    <script>
-        alert("Произошла ошибка регистрации, аккаунт с указанным номером телефона или указаной электронной почтой уже существует. Попробуйте зарегистрироватся заново или обратитесь в службу поддержки")
-    </script>
-    <?php
-    $_SESSION['errorRegister'] = null;
-}
-if (isset($_SESSION['errorLogin'])) {
-    ?>
-    <script>
-        alert("Неверно указан логин или пароль")
-    </script> <?php
-    $_SESSION['errorLogin'] = null;
-}
 if (isset($_SESSION['userId'])) {
     if ($user['role'] == 'admin') { ?>
         <h1>Добро пожаловать в админ панель!!! </h1>
-        <a href="/controllers/AdminController.php" class="button"> Перейти в редактор </a>
+        <a href="/views/adminPanel/" class="button"> Перейти в редактор </a>
     <?php }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +26,7 @@ if (isset($_SESSION['userId'])) {
     <script src="/assets/scripts/more.js" defer></script>
     <script src="/assets/scripts/scroll.js" defer></script>
     <script src="/assets/scripts/header.js" defer></script>
+    <script src="/assets/scripts/theme.js" defer></script>
 </head>
 
 <body>
@@ -60,16 +45,16 @@ if (isset($_SESSION['userId'])) {
             </nav>
             <div class="header__menu">
                 <?php
-                if (isset($_SESSION['userId'])) {
+                if ($user['id'] != 0 || !isset($user['id'])) {
                     if ($user['avatar'] != null && $user['avatar'] != '') {
                         $avatar = $user['avatar'];
                     } else {
                         $avatar = '/assets/icons/Profile.svg';
                     } ?>
-                    <form action="/views/accaunt/index.php">
-                        <button type="submit" class="header__accaunt-btn"><img alt=" " src="<?='/'. $avatar ?>"
-                                                                               class="header__accaunt-img "
-                                                                               id="accauntBtn"></button>
+                    <form action="/views/accaunt/">
+                        <button type="submit" class="header__accaunt-btn"><img alt=" " src="<?= $avatar ?>"
+                                                                               class="header__accaunt-img ">
+                        </button>
                     </form>
                 <?php } else { ?>
                     <button class="header__accaunt-btn"><img src="/assets/icons/Profile.svg" alt=""

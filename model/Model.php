@@ -58,4 +58,17 @@ class Model
 
     }
 
+    public function getUserSubscriptions($userId)
+    {
+
+        $query = "SELECT s.*, us.valid_until FROM subscriptions s
+                  JOIN user_subscriptions us ON s.id = us.subscription_id
+                  WHERE us.user_id = ?;";
+        $result = $this->pdo->prepare($query);
+        $result->execute([$userId]);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+
 }

@@ -1,3 +1,5 @@
+<?php /* @var $path */ ?>
+
 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__logo logo">
@@ -46,7 +48,7 @@
     </div>
 </footer>
 <div class="register">
-    <form action="controllers/UserController.php" name="register" class="register__body" method="post">
+    <form action="<?= $path ?>?user=1" name="register" class="register__body" method="post">
         <div class="register__body-header">
             <h1 class="register__title"><b>РЕГИСТРАЦИЯ</b></h1>
             <label class="register__close-label" for="closeRegister">Закрыть окно
@@ -112,7 +114,7 @@
     </form>
 </div>
 <div class="login">
-    <form action="controllers/UserController.php" name="login" class="login__body" method="post">
+    <form action="<?= $path ?>?user=1" name="login" class="login__body" method="post">
         <div class="login__body-header">
             <h1 class="login__title"><b>ВХОД</b></h1>
             <label class="login__close-label" for="closeRegister">Закрыть окно

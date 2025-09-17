@@ -17,33 +17,45 @@ class AccauntController extends Controller
         $m = new \AccauntModel;
 
         $user = [
-            'id' => null,
+            'id' => 0,
             'role' => 'guest'
         ];
 
         if (isset($_SESSION['userId'])) {
             $user = $m->getUser($_SESSION['userId']);
+
+            $preSubscriptions = $m->getUserSubscriptions($user['id']);
+            $subscriptions = [];
+
+
+            foreach ($preSubscriptions as $sb) {
+                $date = $m->getUserSubscriptionExpirationDate($user['id'], $sb['id']);
+
+                $subscriptions[] = [
+                    'id' => $sb['id'],
+                    'date' => $date,
+                    'title' => $sb['title'],
+                    'description' => $sb['description'],
+                    'price' => $sb['price'],
+                    'valid_until' => $sb['valid_until']
+                ];
+
+            }
+
+            $suggestedSubscriptions = $m->getAvailableSubscriptions($user['id']);
+
+            return [
+                'user' => $user,
+                'subscriptions' => $subscriptions,
+                'suggestedSubscriptions' => $suggestedSubscriptions
+            ];
+        } else {
+            return [
+                'user' => $user
+            ];
         }
 
-        $preSubscriptions = $m->getUserSubscriptions($user['id']);
-        $subscriptions = [];
 
-
-
-        foreach ($preSubscriptions as $sb) {
-            $date = $m->getUserSubscriptionExpirationDate($user['id'], $sb['id']);
-
-            $sb['date'] = $date;
-
-        }
-
-        $suggestedSubscriptions = $m->getAvailableSubscriptions($user['id']);
-
-        return [
-            'user' => $user,
-            'subscriptions' => $subscriptions,
-            'suggestedSubscriptions ' => $suggestedSubscriptions
-        ];
 
     }
 

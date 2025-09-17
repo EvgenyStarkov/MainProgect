@@ -46,14 +46,14 @@
     </div>
 </footer>
 <div class="register">
-    <form action="../../controllers/UserController.php" name="register" class="register__body" method="post"
+    <form action="<?= $path ?>?user=1" name="register" class="register__body" method="post"
           enctype="multipart/form-data">
         <div class="register__body-header">
             <h1 class="register__title"><b>ВАШИ ДАННЫЕ</b></h1>
             <label class="register__close-label" for="closeRegister">Закрыть окно
                 регистрации</label>
             <button class="register__close" type="button" id="closeRegister">
-                <img src="../../assets/icons/Close.svg" alt="" class="register__close-img">
+                <img src="/assets/icons/Close.svg" alt="" class="register__close-img">
             </button>
         </div>
         <ul class="register__body-list">
@@ -102,9 +102,6 @@
         </ul>
         <button type="submit" name="reId" value="<?= $_SESSION['userId'] ?>" class="register__submit button">
             Изменить
-        </button>
-        <button type="submit" name="deId" value="<?= $_SESSION['userId'] ?>" class="register__submit button">
-            удалить аккаунт
         </button>
     </form>
 </div>

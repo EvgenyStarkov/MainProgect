@@ -27,7 +27,7 @@
                     ?>
 
                     <a class="collections__item-link" href="/views/content?id=<?= $cc['id'] ?>&&type=<?= $cc['type'] ?>">
-                        <img src="<?= '/' . $cc['cover'] ?>" class="collections__item-link-img"
+                        <img src="<?=  $cc['cover'] ?>" class="collections__item-link-img"
                              alt="<?= $cc['title'] ?>">
                     </a>
                     <?php
@@ -52,7 +52,7 @@
             <?php foreach ($allVideo as $v) { ?>
 
                     <a class="collections__item-link" href="/views/content?id=<?= $v['id'] ?>&&type=<?= $v['type'] ?>">
-                        <img src="<?= '/' . $v['cover'] ?>" class="collections__item-link-img" alt="<?= $v['title'] ?>">
+                        <img src="<?=  $v['cover'] ?>" class="collections__item-link-img" alt="<?= $v['title'] ?>">
                     </a>
 
             <?php } ?>

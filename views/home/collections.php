@@ -24,7 +24,7 @@ if(count($collections) > 0){
                     ?>
 
                     <a class="collections__item-link" href="/views/content?id=<?= $cc['id'] ?>&&type=<?= $cc['type'] ?>">
-                        <img src="<?= '/' . $cc['cover'] ?>" class="collections__item-link-img" alt="<?= $cc['title'] ?>">
+                        <img src="<?=  $cc['cover'] ?>" class="collections__item-link-img" alt="<?= $cc['title'] ?>">
                     </a>
                     <?php if ($count >= 10) {
                         break;

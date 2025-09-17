@@ -3,19 +3,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/model/Model.php';
 class AccauntModel extends  Model
 {
-
-    public function getUserSubscriptions($userId)
-    {
-
-        $query = "SELECT s.*, us.valid_until FROM subscriptions s
-                  JOIN user_subscriptions us ON s.id = us.subscription_id
-                  WHERE us.user_id = ?;";
-        $result = $this->pdo->prepare($query);
-        $result->execute([$userId]);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
     public function getUserSubscriptionExpirationDate($userId, $subscriptionId)
     {
         $query = "SELECT valid_until FROM user_subscriptions 
@@ -30,9 +17,7 @@ class AccauntModel extends  Model
 
     public function getAvailableSubscriptions($userId)
     {
-        $query = "SELECT * 
-              FROM subscriptions 
-              WHERE id NOT IN (
+        $query = "SELECT * FROM subscriptions WHERE id NOT IN (
                   SELECT subscription_id 
                   FROM user_subscriptions 
                   WHERE user_id = ?

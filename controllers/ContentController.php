@@ -20,7 +20,7 @@ class ContentController extends Controller
         $m = new  \ContentModel;
 
         $user = [
-            'id' => 10,
+            'id' => 0,
             'role' => 'guest'
         ];
 

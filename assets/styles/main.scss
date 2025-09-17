@@ -24,5 +24,6 @@
 @use './blocks/video-player.scss';
 @use './blocks/accaunt';
 @use './blocks/subscriptions';
-@use './blocks/film-actors';
+@use 'blocks/film-actors';
 @use './blocks/error';
+@use 'blocks/content-setting';

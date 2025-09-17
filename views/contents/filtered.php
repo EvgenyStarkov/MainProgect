@@ -18,7 +18,7 @@ if(count($filtered) > 0){
             <?php foreach ($filtered as $fr){?>
 
                 <a class="collections__item-link" href="/views/content?id=<?= $fr['id'] ?>&&type=<?= $fr['type'] ?>">
-                    <img src="<?= '/' . $fr['cover'] ?>" class="collections__item-link-img" alt="<?= $fr['title'] ?>">
+                    <img src="<?=   $fr['cover'] ?>" class="collections__item-link-img" alt="<?= $fr['title'] ?>">
                 </a>
 
         <?php } ?>

@@ -4,12 +4,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/HomeController.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/ContentController.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/ContentsController.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/CollectionController.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/AccauntController.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/AdminController.php';
 
 class Router
 {
     private $currentController = null;
 
-    private $routes = ['/views/home/','/views/content/' ,'/views/contents/', '/views/collection/'];
+    private $routes = ['/views/home/','/views/content/' ,'/views/contents/', '/views/collection/', '/views/accaunt/', '/views/adminPanel/'];
 
     public function redirect(string $path, array $params)
     {
@@ -49,6 +51,12 @@ class Router
                 break;
             case '/views/collection/';
                 $controller = new CollectionController;
+                break;
+            case '/views/accaunt/';
+                $controller = new AccauntController;
+                break;
+            case '/views/adminPanel/';
+                $controller = new AdminController;
                 break;
         }
 

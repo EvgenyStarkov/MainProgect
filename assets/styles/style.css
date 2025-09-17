@@ -91,6 +91,15 @@ a {
   --fontAccent: "WDXL Lubrifont SC", sans-serif;
 }
 
+.theme-light {
+  --colorDark: #F8F8F8;
+  --colorDarkAlt: #E0E0E0;
+  --colorDarkAlt2: #C8C8C8;
+  --colorLight: #121212;
+  --colorLightAlt: #2D2D2D;
+  --colorLightAlt2: #454545;
+}
+
 body {
   position: relative;
   background-color: var(--colorDark);
@@ -1877,6 +1886,56 @@ input::placeholder {
   text-align: center;
   color: var(--colorAccentAlt);
   font-size: clamp(1.5625rem, 0.0516528926rem + 6.1983471074vw, 6.25rem);
+}
+
+.content-setting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: clamp(0.625rem, 0.222107438rem + 1.652892562vw, 1.875rem);
+  margin-top: 15dvh;
+}
+.content-setting__table {
+  font-size: clamp(0.625rem, 0.5242768595rem + 0.4132231405vw, 0.9375rem);
+  width: 90%;
+  border: 3px var(--colorAccent) solid;
+  border-collapse: collapse;
+}
+.content-setting__table-item {
+  max-width: 60px;
+  border: 1px var(--colorAccent) solid;
+}
+.content-setting__table-input {
+  border: none;
+  width: 90%;
+  overflow: hidden;
+}
+.content-setting__table-input:hover, .content-setting__table-input:focus, .content-setting__table-input:active {
+  border: none;
+}
+.content-setting__table-video {
+  width: 50px;
+  height: 50px;
+}
+.content-setting__add-form {
+  width: 90%;
+}
+.content-setting__add-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.content-setting__add-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=style.css.map */

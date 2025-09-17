@@ -17,7 +17,7 @@ class CollectionController extends Controller
         $m = new \Model;
 
         $user = [
-            'id' => null,
+            'id' => 0,
             'role' => 'guest'
         ];
 

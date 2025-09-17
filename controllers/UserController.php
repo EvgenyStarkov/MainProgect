@@ -1,113 +1,85 @@
 <?php
-require_once "../model/Model.php";
-session_start();
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/model/UserModel.php';
+
+// далена сессия т.к она во фронт-контролере, заменены все запросы на элементы массива $params
 class UserController
 {
-    public function login()
+
+    public function login($params)
     {
-        $m = new Model;
-        $user = $m->getUserForEmail($_POST['lEmail'], $_POST['lPassword']);
+        $m = new UserModel;
+        $user = $m->getUserForEmail($params['lEmail'], $params['lPassword']);
         if ($user != '') {
-            $_SESSION['userId'] = $user['id'];
-            if($user['role'] == 'admin'){
-                header("Location: ./AdminController.php");
-            } else {header("Location: /home.php");}
+            $_SESSION['userId'] = $user['id']; // Удалена проверка на роль пользователя, и последующий редирект т.к
+            //данный функционал должен быть у фронт-контроллера, последующие редиректы так же удалены
         } else {
-            header("Location: /home.php");
             $_SESSION['errorLogin'] = 1;
         }
     }
 
-    public function register()
+    public function register($params)
     {
-        $m = new Model;
+        $m = new UserModel;
         $emailCount = 0;
         $consent = 0;
         $users = $m->getAllUser();
 
         foreach ($users as $u) {
-            if ($_POST['email'] == $u['email']) {
+            if ($params['email'] == $u['email'] || $params['tel'] == $u['tel']) {
                 $emailCount = $emailCount + 1;
             }
         }
 
-        foreach ($users as $u) {
-            if ($_POST['tel'] == $u['tel']) {
-                $emailCount = $emailCount + 1;
-            }
-        }
+        if (isset($params['password']) == isset($params['repeatPassword']) && $emailCount < 1) {
 
-        if (isset($_POST['password']) == isset($_POST['repeatPassword']) && $emailCount < 1) {
-
-            if (isset($_POST['consentToMailing'])) {
-                $consent = $_POST['consentToMailing'];
+            if (isset($params['consentToMailing'])) {
+                $consent = $params['consentToMailing'];
             }
 
-            $m->addUser($_POST['name'], $_POST['userName'], $_POST['email'], $_POST['tel'], $_POST['password'], $consent);
-            $user = $m->getUserForEmail($_POST['email'], $_POST['password']);
+            $m->addUser($params['name'], $params['userName'], $params['email'], $params['tel'], $params['password'], $consent);
+            $user = $m->getUserForEmail($params['email'], $params['password']);
             $_SESSION['userId'] = $user['id'];
-            header("Location: /home.php");
+
         } else {
-            header("Location: /home.php");
             $_SESSION['errorRegister'] = 1;
         }
     }
 
-
-    function updateUserStart()
+    function updateUserStart($params)
     {
-        $m = new Model;
+        $m = new UserModel;
 
-        if (isset($_POST['reName'])) {
-            $m->updateUser($_POST['reId'], [
-                'name' => $_POST['reName']
-            ]);
-        }
-
-        if (isset($_POST['reUserName'])) {
-            $m->updateUser($_POST['reId'], [
-                'username' => $_POST['reUserName']
-            ]);
-
-
-            if (isset($_POST['reUserName'])) {
-
-                $m->updateUser($_POST['reId'], [
-                    'username' => $_POST['reUserName']
+        if (isset($params['reName'])) {
+            $m->updateUser($params['reId'],
+                ['name' => $params['reName']
                 ]);
-            }
+        }
+
+        if (isset($params['reUserName'])) {
+            $m->updateUser($params['reId'], [
+                'username' => $params['reUserName']
+            ]);
 
         }
 
-        if (isset($_POST['reEmail'])) {
+        if (isset($params['reEmail'])) {
 
             $emailCount1 = 0;
             $users = $m->getAllUser();
 
             foreach ($users as $u) {
-                if ($_POST['reEmail'] == $u['email'] && $_POST['reId'] != $u['id']) {
+                if ($params['reEmail'] == $u['email'] && $params['reId'] != $u['id']) {
                     $emailCount1 = $emailCount1 + 1;
-                    echo $_POST['reEmail'].'Почта с формы'."<br>";
-                    echo $u['email'].'Почта с базы данных'."<br>";
-                    echo $emailCount1."<br>";
-                    echo $u['id']."<br>";
-                    echo "Такая почта в базе есть"."<br><br>";
-                } else{
-                    echo $_POST['reEmail'].'Почта с формы'."<br>";
-                    echo $u['email'].'Почта с базы данных'."<br>";
-                    echo $emailCount1."<br>";
-                    echo "Это указанный пользователь"."<br><br>";
                 }
             }
 
             if ($emailCount1 < 1) {
-                $m->updateUser($_POST['reId'], [
-                    'email' => $_POST['reEmail']
+                $m->updateUser($params['reId'], [
+                    'email' => $params['reEmail']
                 ]);
             } else {
                 $_SESSION['errorRefactor'] = 1;
-                echo "error";
             }
         }
 
@@ -117,100 +89,213 @@ class UserController
             $users = $m->getAllUser();
 
             foreach ($users as $u) {
-                if ($_POST['reTel'] == $u['tel'] && $_POST['reId'] != $u['id']) {
+                if ($params['reTel'] == $u['tel'] && $params['reId'] != $u['id']) {
                     $emailCount1 = $emailCount1 + 1;
-                    echo $_POST['reTel'].'Телефон с формы'."<br>";
-                    echo $u['tel'].'Телефон с базы данных'."<br>";
-                    echo $emailCount1."<br>";
-                    echo $u['id']."<br>";
-                    echo "Такой телефон есть в базе данных"."<br><br>";
-                } else {
-                    echo $_POST['reTel'].'Телефон с формы'."<br>";
-                    echo $u['tel'].'Телефон с базы данных'."<br>";
-                    echo $emailCount1."<br>";
-                    echo "Это указанный пользователь"."<br><br>";
                 }
             }
 
             if ($emailCount1 < 1) {
-                $m->updateUser($_POST['reId'], [
-                    'tel' => $_POST['reTel']
+                $m->updateUser($params['reId'], [
+                    'tel' => $params['reTel']
                 ]);
             } else {
                 $_SESSION['errorRefactor'] = 1;
-                echo "error";
             }
         }
 
-        if (isset($_POST['rePassword'])) {
-            $m->updateUser($_POST['reId'], [
-                'password' => $_POST['rePassword']
+        if (isset($params['rePassword'])) {
+            $m->updateUser($params['reId'], [
+                'password' => $params['rePassword']
             ]);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
-                $file = $_FILES['avatar'];
-                $fileName = $file['name'];
+            if (!isset($_FILES['avatar'])) {
+                // нет файла
+                return;
+            }
 
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/avatars/';
+            $file = $_FILES['avatar'];
 
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true); // Создаем рекурсивно
+            // Проверка ошибок загрузки
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                // можно логировать/обрабатывать коды ошибок
+                return;
+            }
+
+            // Настройки
+            $maxSize = 5 * 1024 * 1024; // 5 MB
+            $allowed = [
+                'image/jpeg' => 'jpg',
+                'image/png'  => 'png',
+                'image/gif'  => 'gif'
+            ];
+
+            if ($file['size'] > $maxSize) {
+                // файл слишком большой
+                return;
+            }
+
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $mime = $finfo->file($file['tmp_name']);
+            if ($mime === false || !array_key_exists($mime, $allowed)) {
+                // неподдерживаемый формат
+                return;
+            }
+
+            $ext = $allowed[$mime];
+
+            // Создаём директорию загрузок
+            $uploadDir = rtrim($_SERVER['DOCUMENT_ROOT'], DIRECTORY_SEPARATOR) . '/uploads/avatars/';
+            if (!is_dir($uploadDir)) {
+                if (!mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
+                    // не удалось создать директорию
+                    return;
                 }
+            }
 
-                $fileName = uniqid() . '_' . basename($file['name']);
-                $destination = $uploadDir . $fileName;
+            // Генерируем уникальное имя и полный путь
+            $fileName = bin2hex(random_bytes(8)) . '_' . time() . '.' . $ext;
+            $destination = $uploadDir . $fileName;
+
+            // Перемещаем tmp-файл в директорию загрузок
+            if (!move_uploaded_file($file['tmp_name'], $destination)) {
+                // не удалось переместить файл
+                return;
+            }
+
+            // Относительный путь, который будет храниться в БД
+            $relativePath = '/uploads/avatars/' . $fileName;
+
+            // Получаем текущий путь аватара пользователя (если хотите удалить старый)
+            // Предполагаю, что у вас есть метод getUserById или аналогичный
+            $userId = $params['reId']; // убедитесь, что $params['reId'] задан
+            $currentUser = $m->getUser($userId); // Добавьте этот метод, если его нет
+
+            if ($currentUser && !empty($currentUser['avatar'])) {
+                // Удаляем старый файл если он лежит в /uploads/avatars и файл существует
+                $oldPath = rtrim($_SERVER['DOCUMENT_ROOT'], DIRECTORY_SEPARATOR) . $currentUser['avatar'];
+                if (strpos(realpath($oldPath) ?: '', realpath($uploadDir) ?: '') === 0 && is_file($oldPath)) {
+                    @unlink($oldPath);
+                }
+            }
+
+            // Обновляем пользователя в БД
+            $m->updateUser($userId, ['avatar' => $relativePath]);
+
+        }
 
 
-                if (move_uploaded_file($file['tmp_name'], $destination)) {
-                    // Сохраняем путь к файлу в БД: '/uploads/avatars/' . $fileName
-                    echo "Файл загружен в: " . $destination;
+    }
+
+    public function subRefresh()
+    {
+
+        /* @var $user */
+
+        $m = new UserModel;
+        $subscriptions = $m->getUserSubscriptions($_SESSION['userId']);
+
+        foreach ($subscriptions as $sb) {
+
+            $user = $m->getUser($_SESSION['userId']);
+
+            $date = date('Y-m-d');
+            $expirationDate = $m->getUserSubscriptionExpirationDate($user['id'], $sb['id']);
+
+            if ($date > $expirationDate) {
+
+                if ($user['cash'] - $sb['price'] >= 0) {
+
+                    $m->updateUserCash($user['id'], (-$sb['price']));
+                    $newDate = $m->getDateAfter31Days();
+                    $m->updateUserSubscriptionDate($user['id'], $sb['id'], $newDate);
+
                 } else {
-                    echo "Ошибка при сохранении файла!";
-                }
-
-                $m->updateUser($_POST['reId'], [
-                    'avatar' =>  '/uploads/avatars/' . $fileName
-                ]);
+                    $m->removeUserSubscription($user['id'], $sb['id']); ?>
+                    <script> alert("Вам не хватило средст для продления  подписки : '<?= $sb['title'] ?>' В следствии чего она была удалена из ваших подписок") </script>
+                <?php }
             }
         }
+
     }
 
-    public function index()
+    public function index($params)
     {
-        if (isset($_POST['name']) && isset($_POST['password']) && isset($_POST['repeatPassword'])) {
-            $this->register();
+
+
+        if (isset($params['lEmail']) && isset($params['lPassword'])) {
+
+            $this->login($params);
+
+        } else {
+
+            if (isset($params['exit'])) {
+                $_SESSION['userId'] = null;
+                session_destroy();
+            } else {
+
+                if (isset($params['name']) && isset($params['password']) && isset($params['repeatPassword'])) {
+                    $this->register($params);
+                } else {
+
+                    if (isset($params['reId'])) {
+                        $this->updateUserStart($params);
+                    } else {
+
+                        if (isset($params['deId'])) {
+                            $m = new UserModel;
+                            $m->deleteUser($params['deId']);
+                            session_destroy();
+
+                        }
+
+                    }
+                }
+            }
+
         }
 
-        if (isset($_POST['lEmail']) && isset($_POST['lPassword'])) {
-            $this->login();
+        if (isset($params['subBuy'])) {
+
+            $m = new UserModel();
+
+            $user = $m->getUser($_SESSION['userId']);
+
+            $subscription = $m->getSubscriptionById($params['subBuy']);
+
+            if ($user['cash'] - $subscription['price'] >= 0) {
+                $date = $m->getDateAfter31Days();
+                $m->updateUserCash($user['id'], (-$subscription['price']));
+                $m->buySubscription($user['id'], $_POST['subBuy'], $date);
+
+            } else { ?>
+
+                <script> alert("Недостаточно средств для получения подписки") </script>
+
+            <?php }
+        } else {
+
+            /* @var $user */
+
+            if (isset($params['subDelete'])) {
+
+                $m = new UserModel();
+
+                $m->removeUserSubscription($_SESSION['userId'], $params['subDelete']);
+
+            }
+
         }
 
-        if (isset($_POST['exit'])) {
-            session_destroy();
-            header("Location: /home.php");
+        if (isset($_SESSION['userId'])) {
+            $this->subRefresh();
         }
-
-        if (isset($_POST['reId'])) {
-            $this->updateUserStart();
-            header("Location: /views/accaunt/home.php");
-        }
-
-        if(isset($_POST['deId'])){
-            $m = new Model;
-            $m->deleteUser($_POST['deId']);
-            session_destroy();
-            header("Location: /home.php");
-
-        }
-
 
     }
+
 }
 
-$uc = new UserController;
-$uc->index();
 
 
 

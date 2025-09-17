@@ -1,7 +1,7 @@
 console.log(' register script start')
 
-class User{
-    constructor(a,b,c,d,e,f){
+class User {
+    constructor(a, b, c, d, e, f) {
         this.name = a;
         this.userName = b;
         this.email = c;
@@ -9,7 +9,7 @@ class User{
         this.password = e;
         this.emailConsent = f;
         console.log(this, 'ОбЬект');
-    }    
+    }
 }
 
 const registerSubmit = document.querySelector('.register__submit');
@@ -29,10 +29,12 @@ registerSubmit.addEventListener('click', (event) => {
 
     console.log(registerName, registerUserName, registerEmail, registerTel, registerPassword, registerPassword2, registerCheckbox, registerCheckbox2, 'ИНПУТЫ');
 
-    if(registerPassword == registerPassword2){
-        const newUser = new User(registerName,registerUserName,registerEmail,registerTel,registerPassword,registerCheckbox2);
+    if (registerPassword == registerPassword2) {
+        const newUser = new User(registerName, registerUserName, registerEmail, registerTel, registerPassword, registerCheckbox2);
         console.log(newUser, "Новый пользователь")
-    } else{alert('Парроли не совпадаютю Повторите попытку!!!!!')}
+    } else {
+        alert('Парроли не совпадаютю Повторите попытку!!!!!')
+    }
 
 });
 
@@ -44,30 +46,33 @@ const loginCloseBtn = document.querySelector('.login__close');
 const registerOpenBtn = document.querySelector('.login__register-link');
 const accauntChangeBtn = document.querySelector('.accaunt__info-btn');
 
-accauntBtn.addEventListener('click', ()=>{
-    document.body.style.overflow = 'hidden';
-    login.style.display = 'block';
-});
+if (accauntBtn) {
+    accauntBtn.addEventListener('click', () => {
+        document.body.style.overflow = 'hidden';
+        login.style.display = 'block';
+    });
+}
 
-if(accauntChangeBtn){
-accauntChangeBtn.addEventListener('click', ()=>{
-    document.body.style.overflow = 'hidden';
-    register.style.display = 'block';
-});
-};
+if (accauntChangeBtn) {
+    accauntChangeBtn.addEventListener('click', () => {
+        document.body.style.overflow = 'hidden';
+        register.style.display = 'block';
+    });
+}
+;
 
 
-registerCloseBtn.addEventListener('click',()=>{
+registerCloseBtn.addEventListener('click', () => {
     document.body.style.overflow = 'scroll';
     register.style.display = 'none'
 });
 
-loginCloseBtn.addEventListener('click',()=>{
+loginCloseBtn.addEventListener('click', () => {
     document.body.style.overflow = 'scroll';
     login.style.display = 'none'
 })
 
-registerOpenBtn.addEventListener('click',()=>{
+registerOpenBtn.addEventListener('click', () => {
     login.style.display = 'none'
     register.style.display = 'block'
 })

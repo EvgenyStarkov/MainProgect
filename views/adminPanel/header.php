@@ -12,13 +12,10 @@ if (isset($_SESSION['userId'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- head -->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= 'MEGAFILMS || ' . $pageTitle ?></title>
+    <title>MEGAFILMS || ADMIN PANEL</title>
 
     <link rel="stylesheet" href="/assets/styles/style.css">
     <link rel="icon" href="/assets/icons/logo.svg" type="image/x-icon">
@@ -29,15 +26,10 @@ if (isset($_SESSION['userId'])) {
     <script src="/assets/scripts/filter.js" defer></script>
     <script src="/assets/scripts/theme.js" defer></script>
 </head>
-
-
 <body>
-
-<!-- header -->
-
 <header class="header">
     <div class="header__inner">
-        <a class="header__logo logo" href="/views/home/">
+        <a class="header__logo logo" href="/">
             <img src="/assets/icons/logo.svg" alt="" class="logo__img">
             <span class="logo__title">MEGAFILM </span>
         </a>
@@ -45,7 +37,7 @@ if (isset($_SESSION['userId'])) {
             <a href="/views/contents?type=фильм" class="header__nav-link">Фильмы</a>
             <a href="/views/contents?type=сериал" class="header__nav-link">Сериалы</a>
             <a href="/views/contents?type=музыкальный клип" class="header__nav-link">Клипы</a>
-            <a href="/views/contents?type=спортивное событие" class="header__nav-link">Спорт</a>
+            <a href="/views/contents?type=спортивное событие"class="header__nav-link">Спорт</a>
         </nav>
         <div class="header__menu">
             <?php
@@ -66,5 +58,3 @@ if (isset($_SESSION['userId'])) {
             <?php } ?>
         </div>
 </header>
-
-

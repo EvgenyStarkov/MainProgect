@@ -198,7 +198,7 @@ if (isset($video['id'])) {
                             <?php foreach ($recommendations as $f) { ?>
 
                                 <a class="collections__item-link" href="/views/content/?id=<?= $f['id'] ?>&type=<?= $contentType ?>">
-                                        <img src="<?= '/' . $f['cover'] ?>" alt="<?= $f['title'] ?>" class="collections__item-link-img">
+                                        <img src="<?=  $f['cover'] ?>" alt="<?= $f['title'] ?>" class="collections__item-link-img">
                                 </a>
 
                                 <?php } ?>
@@ -220,7 +220,7 @@ if (isset($video['id'])) {
                                 $avatar = "/assets/icons/Test Account.svg";
 
                                 if ($user['avatar'] != null && $user['avatar'] != '') {
-                                    $avatar = '/' . $user['avatar'];
+                                    $avatar =  $user['avatar'];
                                 } ?>
 
                                 <div class="coments__item">

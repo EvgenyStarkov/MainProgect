@@ -21,7 +21,7 @@ if(isset($collection)){
                         ?>
 
                         <a class="collections__item-link" href="/views/content/?id=<?= $f['id']?>"  >
-                                <img src="<?= '/' . $f['cover'] ?>" class="collections__item-link-img" alt="<?= $f['title']?>">
+                                <img src="<?= $f['cover'] ?>" class="collections__item-link-img" alt="<?= $f['title']?>">
                         </a>
 
                         <?php } ?>

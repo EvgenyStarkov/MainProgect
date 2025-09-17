@@ -49,7 +49,7 @@
 </footer>
 <!-- register -->
 <div class="register">
-    <form action="<?= $path ?>?user=1&&type=<?= $contentType?>" name="register" class="register__body" method="post">
+    <form action="<?= $path ?>?user=1" name="register" class="register__body" method="post">
         <div class="register__body-header">
             <h1 class="register__title"><b>РЕГИСТРАЦИЯ</b></h1>
             <label class="register__close-label" for="closeRegister">Закрыть окно
@@ -116,7 +116,7 @@
 </div>
 <!-- login -->
 <div class="login">
-    <form action="<?= $path ?>?user=1&&type=<?= $contentType?>"" name="login" class="login__body" method="post">
+    <form action="<?= $path ?>?user=1" name="login" class="login__body" method="post">
         <div class="login__body-header">
             <h1 class="login__title"><b>ВХОД</b></h1>
             <label class="login__close-label" for="closeRegister">Закрыть окно

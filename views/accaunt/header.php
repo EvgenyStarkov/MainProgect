@@ -1,3 +1,4 @@
+<?php /* @var $path */?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
     <script src="/assets/scripts/telMask.js" defer></script>
     <script src="/assets/scripts/scroll.js" defer></script>
     <script src="/assets/scripts/filter.js" defer></script>
+    <script src="/assets/scripts/theme.js" defer></script>
 </head>
 <body>
 <header class="header">
@@ -27,9 +29,9 @@
             <a href="/views/contents?type=спортивное событие"class="header__nav-link">Спорт</a>
         </nav>
         <div class="header__menu">
-            <form action="/controllers/UserController.php" method="post">
+            <form action="/views/home/?user=1" method="post">
                 <button type="submit" class="header__accaunt-btn" name="exit" value="1">
-                    <img src="/assets/icons/Exit.svg" alt="" class="header__accaunt-img" id="accauntBtn">
+                    <img src="/assets/icons/Exit.svg" alt="" class="header__accaunt-img">
                 </button>
             </form>
         </div>

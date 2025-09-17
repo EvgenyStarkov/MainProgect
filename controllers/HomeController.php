@@ -17,7 +17,7 @@ class HomeController extends controller
         $m = new \HomeModel;
 
         $user = [
-            'id' => null,
+            'id' => 0,
             'role' => 'guest'
         ];
 
@@ -55,7 +55,6 @@ class HomeController extends controller
 
         }
 
-
         return [
            'user' => $user,
             'slides' => array_slice($slides, 0, 7) ,
@@ -64,8 +63,6 @@ class HomeController extends controller
         ];
 
     }
-
-
 
 }
 

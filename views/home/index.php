@@ -11,7 +11,7 @@ $backgroundVideo = '';
     <!-- hero -->
 
     <video class="hero__background" autoplay muted loop playsinline>
-        <source src="<?= $_SERVER['DOCUMENT_ROOT'] . '/' . $backgroundVideo ?>" type="video/mp4">
+        <source src="/assets/video/HomeBackground.mp4" type="video/mp4">
         <h1>Увы рекламное видео не загрузилось</h1>
     </video>
 
@@ -26,10 +26,10 @@ if (count($slides) > 0) {
         <button class="hero__more-btn button" id="moreBtn"> Подробнее</button>
     </div>
     <div class="hero__more-window">
-        <button class="hero__more-window-close"><img src="../../assets/icons/Close.svg" alt=""
+        <button class="hero__more-window-close"><img src="/assets/icons/Close.svg" alt=""
                                                      class="hero__more-window-close-img"></button>
         <div class="hero__slider">
-            <button class="hero__slider-left-btn"><img src="../../assets/icons/next.svg"
+            <button class="hero__slider-left-btn"><img src="/assets/icons/next.svg"
                                                        alt="Преведущий слайд" class="hero__slider-btn-img"></button>
 
 
@@ -37,17 +37,18 @@ if (count($slides) > 0) {
                 <?php
                 foreach ($slides as $sl) {
                     ?>
+
                     <div class="hero__slide">
                         <h2 class="hero__slide-title "><?= $sl['title'] ?></h2>
                         <?php if ($sl['video'] != 'none') { ?>
                             <video class="hero__slide-video" autoplay muted loop playsinline>
-                                <source src="<?= './' . $sl['video'] ?>" type="video/mp4">
+                                <source src="<?=  $sl['video'] ?>" type="video/mp4">
                                 <h1>Увы рекламное видео не загрузилось</h1>
                             </video>
                         <?php } ?>
                         <p class="hero__slide-text"><?= $sl['text'] ?></p>
                         <?php if ($sl['content_id'] != 'none') { ?>
-                            <a class="button hero__slide-link" href="/views/content/?id=<?= $sl['content_id']?>&&type=<?= $cc['type'] ?>" value="<?= $sl['content_id'] ?>">
+                            <a class="button hero__slide-link" href="/views/content/?id=<?= $sl['content_id']?>" >
                                     Перейти
                                 </a>
                         <?php } ?>
@@ -59,7 +60,7 @@ if (count($slides) > 0) {
             </div>
 
             <button class="hero__slider-right-btn">
-                <img src="../../assets/icons/next.svg" alt="Следующий слайд" class="hero__slider-btn-img">
+                <img src="/assets/icons/next.svg" alt="Следующий слайд" class="hero__slider-btn-img">
             </button>
 
             <div class="hero__slider-pagination">
@@ -105,7 +106,7 @@ foreach ($hits as $h) {
                 foreach ($h['content'] as $cc) {
                     ?>
                     <a class="collections__item-link"
-                       href="/views/content?id=<?= $cc['id'] ?>">>
+                       href="/views/content?id=<?= $cc['id'] ?>">
                         <img src="<?= $cc['cover'] ?>" alt="" class="fresh-hits__item">
                     </a>
                     <?php
