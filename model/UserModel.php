@@ -34,10 +34,6 @@ class UserModel extends Model
                     $value = $value ? 1 : 0;
                 }
 
-                if ($field === 'password' && $value !== '' && $value !== null) {
-                    $value = password_hash($value, PASSWORD_DEFAULT);
-                }
-
                 $setParts[] = "`$field` = ?";
                 $params[] = $value;
             }

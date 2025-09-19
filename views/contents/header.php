@@ -2,13 +2,6 @@
 
 /* @var $user */
 
-if (isset($_SESSION['userId'])) {
-    if ($user['role'] == 'admin') { ?>
-        <h1>Добро пожаловать в админ панель!!! </h1>
-        <a href="/views/adminPanel/" class="button"> Перейти в редактор </a>
-    <?php }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,5 +59,13 @@ if (isset($_SESSION['userId'])) {
             <?php } ?>
         </div>
 </header>
+<?php
+if (isset($_SESSION['userId'])) {
+if ($user['role'] == 'admin') { ?>
+<h1>Добро пожаловать в админ панель!!! </h1>
+<a href="/views/adminPanel/" class="button"> Перейти в редактор </a>
+<?php }
+} ?>
+
 
 

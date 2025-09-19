@@ -1,3 +1,9 @@
+<?php
+
+/* @var $path */
+/* @var $user */
+
+?>
 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__logo logo">

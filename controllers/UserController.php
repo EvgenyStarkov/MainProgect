@@ -246,6 +246,7 @@ class UserController
                         if (isset($params['deId'])) {
                             $m = new UserModel;
                             $m->deleteUser($params['deId']);
+                            $_SESSION['userId'] = null;
                             session_destroy();
 
                         }

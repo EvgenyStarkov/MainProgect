@@ -3,6 +3,7 @@
 /* @var $user */
 /* @var $subscriptions */
 /* @var $suggestedSubscriptions */
+/* @var $path */
 
 if ( $user['id'] != 0) {
 
